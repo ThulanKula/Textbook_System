@@ -15,7 +15,7 @@ public class YearFactory {
 
         // year1 is the name of the object and is not to be confused for the actual year e.g 2020
         Year year1 = new Year.Builder().
-                setYear(year).Build();
+                setYear(year).build();
         return year1;
     }// end of  method
 
