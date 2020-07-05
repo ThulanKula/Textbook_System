@@ -1,5 +1,5 @@
 /**
- *
+ * This is the factory class for the Course domain
  * @author Anastasia Abrahams
  */
 package factory;
