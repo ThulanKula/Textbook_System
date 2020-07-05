@@ -64,7 +64,7 @@ public class Textbook
                 ", bookEdition= " + bookEdition +
                 ", bookISBN='" + bookISBN + '\'' +
                 ", bookVolume= " + bookVolume +
-                ", bookPrice= " + bookPrice +
+                ", bookPrice= " + bookPrice +"$"+
                 '}';
     }
 
