@@ -17,14 +17,14 @@ public class CourseTest {
         Course course = build
                 .setCourseNum("9876543")
                 .setCourseName("Information Communication Technology")
-                .build();
+                .Build();
     }
     @Test
     public void runCourseTest(){
         Course crs = build
                 .setCourseNum("2468391")
                 .setCourseName("BioTechnology")
-                .build();
+                .Build();
         System.out.println(crs.toString());
     }
 }
