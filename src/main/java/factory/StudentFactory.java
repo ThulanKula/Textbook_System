@@ -15,7 +15,7 @@ public class StudentFactory {
                 setStudNumber(studNumber).
                 setFirstName(firstName).
                 setLastName(lastName).
-                setEmail(email).Build();
+                setEmail(email).build();
 
         return student;
     } // end of method
