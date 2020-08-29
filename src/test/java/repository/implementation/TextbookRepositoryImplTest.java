@@ -26,13 +26,13 @@ public class TextbookRepositoryImplTest {
     public void a_create() {
         Textbook created = textbookRepository.create(textbook);
         Assert.assertEquals(textbook.getBookId(), created.getBookId());
-        System.out.println("Textbook created: " +created);
+        System.out.println("created: " +created);
     }
 
     @Test
     public void b_read() {
         Textbook read = textbookRepository.read(textbook.getBookId());
-        System.out.println("Reading textbook created: " +read);
+        System.out.println("Read: " +read);
     }
 
     @Test
@@ -46,18 +46,18 @@ public class TextbookRepositoryImplTest {
                 .setBookDescription("Only used once other than that looks new")
                 .build();
         updated = textbookRepository.update(updated);
-        System.out.println("Book details updated: " +updated);
+        System.out.println("updated: " +updated);
     }
 
     @Test
-    public void d_delete() {
+    public void e_delete() {
         boolean deleted = textbookRepository.delete(textbook.getBookId());
         Assert.assertTrue(deleted);
-        System.out.println("Textbook deleted!!!");
+        //System.out.println("Textbook deleted!!!");
     }
 
     @Test
-    public void e_getAll() {
+    public void d_getAll() {
         System.out.println("Get All: " +textbookRepository.getAll());
     }
 }
