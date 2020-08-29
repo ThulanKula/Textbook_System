@@ -1,9 +1,13 @@
 package repository;
-
-public interface IRepository <Type> {
+/**
+ *  @Author : Thulani Kula
+ *  Date : 25 August 2020
+ *
+ * **/
+public interface IRepository <Type, ID> {
     Type create (Type type);
-    Type read (Type type);
+    Type read (String ID);
     Type update (Type type);
-    void delete ();
+    boolean delete (ID id);
 
 }

@@ -11,7 +11,7 @@ import entity.Year;
  * */
 
 public class YearFactory {
-    public static Year createYear(int year){
+    public static Year createYear(String year){
 
         // year1 is the name of the object and is not to be confused for the actual year e.g 2020
         Year year1 = new Year.Builder().
