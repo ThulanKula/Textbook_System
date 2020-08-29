@@ -9,7 +9,7 @@ package entity;
 
 public class Year {
 
-    private int year;
+    private String year;
 
     private Year (Builder builder){
         this.year = year;
@@ -22,14 +22,14 @@ public class Year {
                 '}';
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
     public static class Builder{
-        private int year;
+        private String year;
 
-        public Builder setYear(int year){
+        public Builder setYear(String year){
             this.year = year;
             return this;
         }

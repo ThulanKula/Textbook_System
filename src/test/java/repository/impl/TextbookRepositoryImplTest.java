@@ -1,4 +1,4 @@
-package repository.implementation;
+package repository.impl;
 
 /**
  * @author aelmick
@@ -13,11 +13,6 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import repository.TextbookRepository;
-
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.Assert.*;
 
 // Fixing Method reading to avoid complication
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
