@@ -1,5 +1,11 @@
 package repository.implementation;
 
+/**
+ * @author aelmick
+ * Des: StringHelper class
+ * date: 29 August 2020
+ */
+
 import entity.Textbook;
 import factory.TextbookFactory;
 import org.junit.Assert;
