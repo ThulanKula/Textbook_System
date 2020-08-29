@@ -1,9 +1,9 @@
 package repository;
 
-public interface IRepository <Type> {
+public interface IRepository <Type, ID> {
     Type create (Type type);
-    Type read (Type type);
+    Type read (ID id);
     Type update (Type type);
-    void delete ();
+    boolean delete (ID id);
 
 }
