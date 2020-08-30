@@ -48,7 +48,10 @@ public class SubjectRepositoryImpl implements SubjectRepository {
         return null;
     }
 
-
+    @Override
+    public boolean delete(String ID){
+        return false;
+    }
 
 
     @Override
