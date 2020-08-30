@@ -50,9 +50,13 @@ public class SubjectRepositoryImpl implements SubjectRepository {
 
     @Override
     public boolean delete(String ID){
-        return false;
+       Subject subject = read(ID);
+       if(subject != null){
+           this.subjectDB.remove(subject);
+           return true;
+       }
+       return false;
     }
-
 
     @Override
     public Set<Subject> getAll(){
