@@ -42,3 +42,4 @@ public class YearRepositoryImplTest {
     @Test
     public void delete() {
     }
+}
