@@ -9,17 +9,16 @@ import java.util.*;
 *
  */
 public class AuthorRepositoryImpl implements AuthorRepository {
+
     public static AuthorRepository authorRepository = null;
-    private Set <Author> authorDB;
+    private Set <Author> authorDB = new HashSet<Author>();
+
 
     public static AuthorRepository getAuthorRepository() {
-        if (authorRepository == null) authorRepository = new AuthorRepositoryImpl();
+        if (authorRepository == null) {
+            authorRepository = new AuthorRepositoryImpl();
+        }
         return authorRepository;
-    }
-
-    @Override
-    public Set<Author> getAll() {
-        return this.authorDB;
     }
 
     @Override
@@ -29,9 +28,11 @@ public class AuthorRepositoryImpl implements AuthorRepository {
     }
 
     @Override
-    public Author read(String ID) {
+    public Author read(String id) {
         for (Author author : this.authorDB){
-            if (author.getAuthNumber().equalsIgnoreCase(ID)) return author;
+            if (author.getAuthNumber().equalsIgnoreCase(id)) {
+                return author;
+            }
         }
         return null;
     }
@@ -47,16 +48,17 @@ public class AuthorRepositoryImpl implements AuthorRepository {
     }
 
     @Override
-    public boolean delete(String s) {
-        return false;
-    }
-
-    /*public boolean delete(Author s) {
-        Author author = read(s);
-        if (author != null){
+    public boolean delete(String id) {
+        Author author = read(id);
+        if (author !=  null) {
             this.authorDB.remove(author);
             return true;
         }
         return false;
-    }*/
+    }
+
+    @Override
+    public Set<Author> getAll() {
+        return this.authorDB;
+    }
 }
