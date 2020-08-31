@@ -39,7 +39,7 @@ public class CourseRepositoryImplTests {
     public void edelete(){
         boolean delete = courseRepository.delete(course.getCourseCode());
         assertTrue(delete);
-        System.out.println("Deleted");
+        System.out.println("Deleted: " + delete);
     }
     @Test
     public void dgetAll(){
