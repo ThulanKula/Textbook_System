@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
-public class CourseRepositoryImpTest {
+public class CourseRepositoryImplTests {
     private static CourseRepository courseRepository = CourseRepositoryImpl.getCourseRepository();
     private static Course course = CourseFactory.buildCourse("Law");
 

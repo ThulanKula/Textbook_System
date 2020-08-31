@@ -12,18 +12,21 @@ public class CourseFactoryTest {
     
     @Test
     public void objectEquality(){
-        Course c1 = CourseFactory.createCourse("3487569", "Biotechnology");
-        Course c2 = CourseFactory.createCourse("6766436", "Accounting");
-        
+        Course c1 = CourseFactory.buildCourse("Biotechnology");
+        Course c2 = CourseFactory.buildCourse("Accounting");
         assertNotSame(c1, c2);
+        System.out.println(c1);
+        System.out.println(c2);
     }
     
     @Test
     public void createCourse(){
-        Course crs = CourseFactory.createCourse("1234567", "Information Communications Technology");
+        Course crs = CourseFactory.buildCourse("Information and Communications Technology");
         
-        assertNotNull(crs.getCourseNum());
+        assertNotNull(crs.getCourseCode());
         assertNotNull(crs.getCourseName());
-     }
+        System.out.println("Code: " + crs.getCourseCode());
+        System.out.println("Name: " + crs.getCourseName());
+    }
      
 }
