@@ -4,9 +4,12 @@ import entity.Author;
 import repository.AuthorRepository;
 import repository.impl.AuthorRepositoryImpl;
 import service.AuthorService;
-
-import java.util.HashSet;
 import java.util.Set;
+
+/**
+ * @Author: Avery Daniels
+ * Date: 2020-09-02
+ */
 
 public class AuthorServiceImpl implements AuthorService {
 
