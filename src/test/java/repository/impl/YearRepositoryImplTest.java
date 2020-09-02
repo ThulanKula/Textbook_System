@@ -1,16 +1,15 @@
 package repository.impl;
 
+import org.junit.Test;
 import entity.Year;
 import factory.YearFactory;
 import org.junit.Assert;
-import org.junit.Test;
 import repository.YearRepository;
-
 import static org.junit.Assert.*;
 
 public class YearRepositoryImplTest {
 
-    private static YearRepository yearRepository = YearRepositoryImpl.getYearRepository();
+   private static YearRepository yearRepository = YearRepositoryImpl.getYearRepository();
     private static Year year = YearFactory.createYear("2");
 
     @Test
