@@ -1,13 +1,11 @@
 package entity;
 
-import Util.GenericHelper;
 import org.junit.Before;
 import org.junit.Test;
 
 public class TextbookTest
 {
     Textbook.Builder builder;
-    String idGenerator = GenericHelper.generateRandomId();
 
     @Before
     public void setUp()
@@ -19,7 +17,7 @@ public class TextbookTest
     public void rightBuild()
     {
         Textbook book1= builder
-                .setBookId(idGenerator)
+                .setBookNum(123456)
                 .setBookISBN("978-3-16-148410-0")
                 .setBookEdition(2020)
                 .setBookName("Métriser les Maths 2")
@@ -33,17 +31,14 @@ public class TextbookTest
     public void runTextbookBuild()
     {
         Textbook book2 = builder
-                .setBookId(idGenerator)
                 .setBookISBN("658-2-36-256410-0")
                 .setBookName("Peter Abraham's")
                 .setBookPrice(120)
                 .build();
 
         Textbook book3 = builder
-                .setBookId(idGenerator)
                 .setBookISBN("978-2-36-256410-0")
                 .setBookName("Peter Abraham's")
-                .setBookDescription("Brand new book")
                 .setBookPrice(170)
                 .build();
         System.out.println(book2.toString());

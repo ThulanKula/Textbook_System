@@ -4,18 +4,18 @@
  */
 package entity;
 
-//Proper one
-public class Course {
-    private String courseCode, courseName;
-    //private String courseName;
 
+public class Course {
+    private String courseNum;
+    private String courseName;
+    
     private Course(Builder builder){
-        this.courseCode = builder.courseCode;
+        this.courseNum = builder.courseNum;
         this.courseName = builder.courseName;
     }
 
-    public String getCourseCode() {
-        return courseCode;
+    public String getCourseNum() {
+        return courseNum;
     }
 
     public String getCourseName() {
@@ -24,26 +24,22 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course{" + "courseCode=" + courseCode + '\''+ ", courseName=" + courseName + '\'' + '}';
+        return "Course{" + "courseNum=" + courseNum + '\''+ ", courseName=" + courseName + '\'' + '}';
     }
-
+    
     public static class Builder{
-        private String courseCode, courseName;
-
-        public Builder courseCode(String courseCode){
-            this.courseCode = courseCode;
+        private String courseNum;
+        private String courseName;
+        
+        public Builder setCourseNum(String courseNum){
+            this.courseNum = courseNum;
             return this;
         }
-        public Builder courseName(String courseName){
+        public Builder setCourseName(String CourseName){
             this.courseName = courseName;
             return this;
         }
-        public Builder copy(Course course){
-            this.courseCode = course.courseCode;
-            this.courseName = course.courseName;
-            return this;
-        }
-        public Course build(){
+        public Course Build(){
             return new Course(this);
         }
     }//End of Builder class

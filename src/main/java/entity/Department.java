@@ -1,14 +1,15 @@
 package entity;
 
 public class Department {
-    private String departmentNum, departmentName;
+    private int departmentNum;
+    private String departmentName;
 
     public Department(Department.Builder builder) {
         this.departmentNum = builder.departmentNum;
         this.departmentName = builder.departmentName;
     }
 
-    public String getDepartmentNum() {
+    public int getDepartmentNum() {
         return departmentNum;
     }
 
@@ -25,10 +26,10 @@ public class Department {
     }
 
     public static class Builder {
-        private String departmentNum;
+        private int departmentNum;
         private String departmentName;
 
-        public Department.Builder setDepartmentNum (String departmentNum) {
+        public Department.Builder setDepartmentNum (int departmentNum) {
             this.departmentNum = departmentNum;
             return this;
         }

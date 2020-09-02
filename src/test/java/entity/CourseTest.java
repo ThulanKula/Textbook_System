@@ -15,17 +15,16 @@ public class CourseTest {
     @Test
     public void correctBuild(){
         Course course = build
-                .courseCode("ICT")
-                .courseName("Information Communication Technology")
-                .build();
-        System.out.println(course.toString());
+                .setCourseNum("9876543")
+                .setCourseName("Information Communication Technology")
+                .Build();
     }
     @Test
     public void runCourseTest(){
         Course crs = build
-                .courseCode("BIT")
-                .courseName("BioTechnology")
-                .build();
+                .setCourseNum("2468391")
+                .setCourseName("BioTechnology")
+                .Build();
         System.out.println(crs.toString());
     }
 }
