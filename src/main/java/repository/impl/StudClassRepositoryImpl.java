@@ -9,7 +9,7 @@ import java.util.Set;
 
 /***
  * @Author : Lukanyo Tando Nkohla
- * StudNo. 218328877
+ * StudNo 218328877
  * */
 
 public class StudClassRepositoryImpl implements StudClassRepository {
