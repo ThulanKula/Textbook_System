@@ -10,7 +10,7 @@ public class DepartmentFactoryTest {
 
     @Test
     public void createDepartment() {
-        Department department = DepartmentFactory.createDepartment("123", "Department of Informatics and Design");
+        Department department = DepartmentFactory.createDepartment("123", "Journalism");
         Assert.assertNotNull(department.getDepartmentName());
         System.out.println(department);
     }
