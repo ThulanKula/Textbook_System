@@ -6,8 +6,7 @@ package entity;
 
 
 public class Course {
-    private String courseNum;
-    private String courseName;
+    private String courseNum, courseName;
     
     private Course(Builder builder){
         this.courseNum = builder.courseNum;
@@ -17,7 +16,6 @@ public class Course {
     public String getCourseNum() {
         return courseNum;
     }
-
     public String getCourseName() {
         return courseName;
     }
@@ -28,18 +26,26 @@ public class Course {
     }
     
     public static class Builder{
-        private String courseNum;
-        private String courseName;
-        
+        private String courseNum, courseName;
+
+        //setters that return an instance of the builder
         public Builder setCourseNum(String courseNum){
             this.courseNum = courseNum;
             return this;
         }
-        public Builder setCourseName(String CourseName){
+
+        public Builder setCourseName(String courseName){
             this.courseName = courseName;
             return this;
         }
-        public Course Build(){
+
+        public Builder copy(Course course){
+            this.courseNum = course.courseNum;
+            this.courseName = course.courseName;
+            return this;
+        }
+
+        public Course build(){
             return new Course(this);
         }
     }//End of Builder class

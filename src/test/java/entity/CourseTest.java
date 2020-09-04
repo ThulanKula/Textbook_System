@@ -7,24 +7,21 @@ import org.junit.*;
 
 public class CourseTest {
     Course.Builder build;
-    
-    @Before
-    public void setUp(){
-        build = new Course.Builder();
-    }
+
     @Test
     public void correctBuild(){
         Course course = build
-                .setCourseNum("9876543")
+                .setCourseNum("ICT252")
                 .setCourseName("Information Communication Technology")
-                .Build();
+                .build();
+        System.out.println(course.toString());
     }
     @Test
     public void runCourseTest(){
         Course crs = build
-                .setCourseNum("2468391")
+                .setCourseNum("BIT543")
                 .setCourseName("BioTechnology")
-                .Build();
+                .build();
         System.out.println(crs.toString());
     }
 }
