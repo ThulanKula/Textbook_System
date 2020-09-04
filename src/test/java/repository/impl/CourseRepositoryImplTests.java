@@ -3,8 +3,6 @@ package repository.impl;
  * Author: Anastasia Abrahams
  * Date: 30 August 2020
  */
-import entity.Course;
-import factory.CourseFactory;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
