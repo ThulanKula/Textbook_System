@@ -5,6 +5,7 @@ package repository.impl;
  * CourseRepositoryImpl is a concrete class that overrides all abstract methods in IRepository and CourseRepository
  *
  */
+import entity.Course;
 import repository.CourseRepository;
 import java.util.HashSet;
 import java.util.Set;
