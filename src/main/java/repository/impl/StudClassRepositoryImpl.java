@@ -1,9 +1,8 @@
 package repository.impl;
 
 import entity.StudClass;
-import entity.Subject;
 import repository.StudClassRepository;
-import repository.SubjectRepository;
+
 
 import java.util.Set;
 
