@@ -4,13 +4,18 @@
  */
 package factory;
 
+import Util.GenericHelper;
+import Util.StringHelper;
 import entity.Course;
 
 public class CourseFactory {
-    public static Course buildCourse(String courseNum, String courseName){
-        return new Course.Builder().
-                setCourseNum(courseNum)
-                .setCourseName(courseName)
+    public static Course buildCourse(String courseName){
+        if (StringHelper.isNullorEmpty(courseName))
+            return  new Course.Builder().build();
+        String courseId = GenericHelper.generateRandomId();
+        return new Course.Builder()
+                .courseCode(courseId)
+                .courseName(courseName)
                 .build();
     }
 }

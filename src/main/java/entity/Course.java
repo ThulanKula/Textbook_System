@@ -4,47 +4,45 @@
  */
 package entity;
 
-
+//Proper one
 public class Course {
-    private String courseNum, courseName;
-    
+    private String courseCode, courseName;
+    //private String courseName;
+
     private Course(Builder builder){
-        this.courseNum = builder.courseNum;
+        this.courseCode = builder.courseCode;
         this.courseName = builder.courseName;
     }
 
-    public String getCourseNum() {
-        return courseNum;
+    public String getCourseCode() {
+        return courseCode;
     }
+
     public String getCourseName() {
         return courseName;
     }
 
     @Override
     public String toString() {
-        return "Course{" + "courseNum=" + courseNum + '\''+ ", courseName=" + courseName + '\'' + '}';
+        return "Course{" + "courseCode=" + courseCode + '\''+ ", courseName=" + courseName + '\'' + '}';
     }
-    
-    public static class Builder{
-        private String courseNum, courseName;
 
-        //setters that return an instance of the builder
-        public Builder setCourseNum(String courseNum){
-            this.courseNum = courseNum;
+    public static class Builder{
+        private String courseCode, courseName;
+
+        public Builder courseCode(String courseCode){
+            this.courseCode = courseCode;
             return this;
         }
-
-        public Builder setCourseName(String courseName){
+        public Builder courseName(String courseName){
             this.courseName = courseName;
             return this;
         }
-
         public Builder copy(Course course){
-            this.courseNum = course.courseNum;
+            this.courseCode = course.courseCode;
             this.courseName = course.courseName;
             return this;
         }
-
         public Course build(){
             return new Course(this);
         }
