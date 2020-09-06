@@ -7,7 +7,6 @@ package entity;
 //Proper one
 public class Course {
     private String courseCode, courseName;
-    //private String courseName;
 
     private Course(Builder builder){
         this.courseCode = builder.courseCode;
@@ -17,7 +16,6 @@ public class Course {
     public String getCourseCode() {
         return courseCode;
     }
-
     public String getCourseName() {
         return courseName;
     }
@@ -30,11 +28,11 @@ public class Course {
     public static class Builder{
         private String courseCode, courseName;
 
-        public Builder courseCode(String courseCode){
+        public Builder setCourseCode(String courseCode){
             this.courseCode = courseCode;
             return this;
         }
-        public Builder courseName(String courseName){
+        public Builder setCourseName(String courseName){
             this.courseName = courseName;
             return this;
         }
