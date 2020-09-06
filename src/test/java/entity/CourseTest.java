@@ -1,31 +1,26 @@
-/**
- *
- * @author Anastasia Abrahams
- */
 package entity;
-import org.junit.*;
+
+import Util.GenericHelper;
+import org.junit.Test;
 
 public class CourseTest {
-    Course.Builder build;
-    
-    @Before
-    public void setUp(){
-        build = new Course.Builder();
+    Course.Builder builder = new Course.Builder();
+    String generator = GenericHelper.generateRandomId();
+
+    @Test
+    public void buildCourse(){
+        Course course1 = builder
+                .setCourseCode(generator)
+                .setCourseName("Accounting")
+                .build();
+        System.out.println(course1.toString());
     }
     @Test
-    public void correctBuild(){
-        Course course = build
-                .courseCode("ICT")
-                .courseName("Information Communication Technology")
+    public void buildCourse2(){
+        Course course1 = builder
+                .setCourseCode(generator)
+                .setCourseName("Multimedia")
                 .build();
-        System.out.println(course.toString());
-    }
-    @Test
-    public void runCourseTest(){
-        Course crs = build
-                .courseCode("BIT")
-                .courseName("BioTechnology")
-                .build();
-        System.out.println(crs.toString());
+        System.out.println(course1.toString());
     }
 }
