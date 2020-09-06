@@ -17,7 +17,7 @@ public class StudClassServiceImpl implements StudClassService {
     private StudClassRepository repository;
 
     private StudClassServiceImpl(){
-        this.repository = StudClassRepositoryImpl.getStudClassRepository();
+        this.repository = StudClassRepositoryImpl.studClassRepository();
     }
 
     public static StudClassService getService(){
