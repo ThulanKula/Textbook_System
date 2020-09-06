@@ -14,8 +14,8 @@ public class CourseFactory {
             return  new Course.Builder().build();
         String courseId = GenericHelper.generateRandomId();
         return new Course.Builder()
-                .courseCode(courseId)
-                .courseName(courseName)
+                .setCourseCode(courseId)
+                .setCourseName(courseName)
                 .build();
     }
 }
