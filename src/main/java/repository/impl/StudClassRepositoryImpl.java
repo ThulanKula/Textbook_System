@@ -17,7 +17,7 @@ public class StudClassRepositoryImpl implements StudClassRepository {
     private Set<StudClass> studClassDB;
 
 
-    public static SubjectRepository studClassRepository() {
+    public static StudClassRepository studClassRepository() {
         if (studClassRepository == null) {
             studClassRepository = new StudClassRepositoryImpl();
         }
