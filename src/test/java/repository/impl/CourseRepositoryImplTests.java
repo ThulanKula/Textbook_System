@@ -31,9 +31,9 @@ public class CourseRepositoryImplTests {
     }
     @Test
     public void cupdate(){
-        Course updated = new Course.Builder().copy(course).courseName(" BA: Law").build();
-        updated = courseRepository.update(updated);
-        System.out.println("Updated: " + updated);
+        Course updatedCourse = new Course.Builder().copy(course).setCourseName("Biotechnology").build();
+        updatedCourse = courseRepository.update(updatedCourse);
+        System.out.println("Updated: " + updatedCourse);
     }
     @Test
     public void edelete(){
