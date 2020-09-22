@@ -21,13 +21,25 @@ public class YearController {
     @Autowired
     private YearServiceImpl yearService;
 
-
     @PostMapping("/create")
     public Year create(@RequestBody Year year){
         Year newYear = YearFactory.createYear(year.getYear());
        Year year2 = yearService.create(newYear);
         return year2;
     }
+
+    @GetMapping("/read")
+    public Year read (@RequestBody String year){
+        Year readYear = YearServiceImpl.getService().read(year);
+        return readYear;
+    }
+
+    public Year update(@RequestBody Year year) {
+        Year updateYear = YearServiceImpl.getService().update(year);
+        return updateYear;
+    }
+
+
 
     @GetMapping("/all_year")
     public Set<Year> getAll(){
