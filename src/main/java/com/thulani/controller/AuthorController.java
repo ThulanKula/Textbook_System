@@ -24,18 +24,18 @@ public class AuthorController {
     @PostMapping("/create")
     public Author create(@RequestBody Author author) {
         Author newAuthor = AuthorFactory.createAuthor(author.getAuthNumber(), author.getAuthFirstName(), author.getAuthLastName());
-        Author author1 = authorService.create(newAuthor);
 
-        return author1;
+        return authorService.create(newAuthor);
     }
 
-    @GetMapping("/read")
-    public Author read(@RequestBody String author) {
-        Author readAuthor = AuthorServiceImpl.getAuthorService().read(author);
+    @GetMapping("/read/{authNumber}")
+    public Author read(@PathVariable String authNumber) {
+        Author readAuthor = AuthorServiceImpl.getAuthorService().read(authNumber);
 
         return readAuthor;
     }
 
+    @PostMapping("/update")
     public Author update(@RequestBody Author author){
         Author updateAuthor = AuthorServiceImpl.getAuthorService().update(author);
 
@@ -46,4 +46,8 @@ public class AuthorController {
     public Set<Author> getAll() {
         return authorService.getAll();
     }
+
+    @DeleteMapping("/delete/{authNumber}")
+    public boolean delete (@PathVariable String authNumber) {return authorService.delete(authNumber);}
+
 }
