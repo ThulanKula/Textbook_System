@@ -1,5 +1,7 @@
 package com.thulani.entity;
 
+import java.io.Serializable;
+
 /**
  *
  * @Author: Thulani Kula
@@ -9,11 +11,14 @@ package com.thulani.entity;
  *
  * */
 
-public class Student {
+public class Student implements Serializable {
     private String studNumber;
     private String firstName;
     private String lastName;
     private String email;
+
+    private Student() {
+    }
 
     private Student(Builder builder) {
         this.studNumber = builder.studNumber;
