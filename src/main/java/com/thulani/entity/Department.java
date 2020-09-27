@@ -1,7 +1,8 @@
 package com.thulani.entity;
 
 public class Department {
-    private String departmentNum, departmentName;
+    private String departmentNum;
+    private String departmentName;
 
     public Department(Department.Builder builder) {
         this.departmentNum = builder.departmentNum;
