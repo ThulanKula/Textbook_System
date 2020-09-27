@@ -4,16 +4,16 @@ import com.thulani.entity.Subject;
 import com.thulani.factory.SubjectFactory;
 import com.thulani.service.impl.SubjectServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*
+import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.Set;
 
 /*
  * @Author: Apiwe Xozwa
  * Date: 26 Sept 2020
  *
  */
-public class SubjectController {
+
 @RestController
 @RequestMapping("/Subject")
     public class SubjectController{
@@ -51,4 +51,4 @@ public class SubjectController {
         return subjectService.delete(subject);
     }
 }
-}
+
