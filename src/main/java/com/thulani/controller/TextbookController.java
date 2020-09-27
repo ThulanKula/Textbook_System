@@ -29,6 +29,25 @@ public class TextbookController
         return textbookService.create(newTextbook);
     }
 
+    @GetMapping("/read/{bookId}")
+    public  Textbook read(@PathVariable String bookId)
+    {
+        return TextbookServiceImpl.getService().read(bookId);
+    }
+
+    @PostMapping
+    public Textbook update(@RequestBody Textbook textbook)
+    {
+        Textbook updateTextbook = TextbookServiceImpl.getService().update(textbook);
+        return updateTextbook;
+    }
+
+    @DeleteMapping("/delete/{bookId}")
+    public boolean delete(@PathVariable String bookId)
+    {
+        return textbookService.delete(bookId);
+    }
+
     @GetMapping("all")
     public Set<Textbook> getall()
     {
