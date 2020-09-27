@@ -1,10 +1,13 @@
 package com.thulani.controller;
 
 import com.thulani.entity.StudClass;
+import com.thulani.entity.Year;
 import com.thulani.factory.StudClassFactory;
 import com.thulani.service.impl.StudClassServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
 
 /**
  * @Author : Lukanyo Tando Nkohla
@@ -22,28 +25,28 @@ public class StudClassController {
 
     @PostMapping("/create")
     public StudClass create(@RequestBody StudClass studClass){
-        StudClass newstudClass = StudClassFactory.createStudClass(StudClass.getStudClass());
-        StudClass studClass2 = StudClassService.create(newstudClass);
-        return studClass2;
+        StudClass newstudClass = StudClassFactory.createStudClass(studClass.getStudCourse());
+        StudClass studClass1 = studClassService.create(newstudClass);
+        return studClass1;
     }
 
     @GetMapping("/read/{SudClass}")
     public StudClass read (@PathVariable String studCourse){
-        return StudClassService.read(studCourse);
+        return studClassService.read(studCourse);
     }
 
     @GetMapping("/update")
     public StudClass update (@RequestBody StudClass studClass){
-        return StudClassService.update(studClass);
+        return studClassService.update(studClass);
     }
 
     @DeleteMapping("/delete/{studClasss}")
     public boolean delete(@PathVariable String studCourse){
-        return StudClassService.delete(studCourse);
+        return studClassService.delete(studCourse);
     }
-    @GetMapping("/all_StudClasss")
+    @GetMapping("/all_StudClass")
     public Set<StudClass> getAll(){
-        return StudClassService.getAll();
+        return studClassService.getAll();
     }
 
 }
