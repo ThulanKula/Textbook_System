@@ -10,7 +10,7 @@ import java.util.Set;
 import static org.junit.Assert.assertEquals;
 
 public class DepartmentServiceImplTest {
-    private static DepartmentService service = DepartmentServiceImpl.getService();
+    private static DepartmentService service = DepartmentServiceImpl.getDepartmentService();
     private static Department department = DepartmentFactory.createDepartment("1101", "Applied Design");
 
     @Test
