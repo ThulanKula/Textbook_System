@@ -10,9 +10,11 @@ import com.thulani.entity.Textbook;
 import com.thulani.repository.TextbookRepository;
 import com.thulani.repository.impl.TextbookRepositoryImpl;
 import com.thulani.service.TextbookService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class TextbookServiceImpl implements TextbookService {
 
     private  static TextbookService service = null;
