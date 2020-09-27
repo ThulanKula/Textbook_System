@@ -1,12 +1,14 @@
 package com.thulani.entity;
 
+import java.io.Serializable;
+
 /**
  * @author Airmick
  * Desc: Entity Textbook with Builder pattern
  * date: 24 june 2020
  */
 
-public class Textbook
+public class Textbook implements Serializable
 {
     private String bookId;
     private String bookName;
@@ -15,6 +17,8 @@ public class Textbook
     private String bookISBN;
     private int bookVolume;
     private double bookPrice;
+
+    private Textbook(){}
 
     private Textbook(Builder builder)
     {
