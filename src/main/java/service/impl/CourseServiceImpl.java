@@ -26,7 +26,6 @@ public class CourseServiceImpl implements CourseService{
 
     @Override
     public Set<Course> getAll(){
-
         return this.cRepository.getAll();
     }
 
