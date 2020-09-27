@@ -28,17 +28,20 @@ public class YearController {
         return year2;
     }
 
-    @GetMapping("/read")
-    public Year read (@RequestBody String year){
-        Year readYear = YearServiceImpl.getService().read(year);
-        return readYear;
-    }
+   @GetMapping("/read/{year}")
+   public Year read (@PathVariable String year){
+        return yearService.read(year);
+   }
 
-    public Year update(@RequestBody Year year) {
-        Year updateYear = YearServiceImpl.getService().update(year);
-        return updateYear;
-    }
+   @GetMapping("/update")
+   public Year update (@RequestBody Year year){
+        return yearService.update(year);
+   }
 
+   @DeleteMapping("/delete/{year}")
+   public boolean delete (@PathVariable String year){
+        return yearService.delete(year);
+   }
 
 
     @GetMapping("/all_year")
