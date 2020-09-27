@@ -4,6 +4,7 @@ import com.thulani.entity.Course;
 import com.thulani.repository.CourseRepository;
 import com.thulani.repository.impl.CourseRepositoryImpl;
 import com.thulani.service.CourseService;
+import org.springframework.stereotype.Service;
 /**
  * Author: Anastasia Abrahams
  * Date: 03 September 2020
@@ -11,8 +12,9 @@ import com.thulani.service.CourseService;
 
 import java.util.Set;
 
+@Service
 public class CourseServiceImpl implements CourseService{
-    public static CourseService course = null;
+    public static CourseService service = null;
     private CourseRepository cRepository;
 
     private CourseServiceImpl(){
@@ -20,8 +22,8 @@ public class CourseServiceImpl implements CourseService{
     }
 
     public static CourseService getCourse(){
-        if(course == null) course = new CourseServiceImpl();
-        return course;
+        if(service == null) service = new CourseServiceImpl();
+        return service;
     }
 
     @Override
