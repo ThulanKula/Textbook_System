@@ -4,6 +4,8 @@ import com.thulani.entity.Student;
 import com.thulani.repository.StudentRepository;
 import com.thulani.repository.impl.StudentRepositoryImpl;
 import com.thulani.service.StudentService;
+import org.springframework.stereotype.Service;
+
 import java.util.Set;
 
 /**
@@ -12,6 +14,7 @@ import java.util.Set;
  *
  * **/
 
+@Service
 public class StudentServiceImpl implements StudentService {
 
     public static StudentService service = null;
