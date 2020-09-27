@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CourseRepositoryImpl implements CourseRepository {
-    //Data structure
+    //Data structure = Set
     private Set<Course> courseDB;
     private static CourseRepository courseRepository = null;
 
