@@ -14,14 +14,13 @@ import java.util.Set;
  *
  * */
 
-@RestController
+@RestCont
 @RequestMapping("/year")
 public class YearController {
 
     @Autowired
     private YearServiceImpl yearService;
 
-    @PostMapping("/create")
     public Year create(@RequestBody Year year){
         Year newYear = YearFactory.createYear(year.getYear());
        Year year2 = yearService.create(newYear);
