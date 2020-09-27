@@ -4,6 +4,7 @@ import com.thulani.entity.Subject;
 import com.thulani.repository.SubjectRepository;
 import com.thulani.repository.impl.SubjectRepositoryImpl;
 import com.thulani.service.SubjectService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
@@ -13,6 +14,7 @@ import java.util.Set;
  *
  */
 
+@Service
 public class SubjectServiceImpl implements SubjectService {
     public static SubjectService service = null;
     private SubjectRepository repository;
