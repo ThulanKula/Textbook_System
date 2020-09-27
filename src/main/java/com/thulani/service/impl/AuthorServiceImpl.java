@@ -4,6 +4,8 @@ import com.thulani.entity.Author;
 import com.thulani.repository.AuthorRepository;
 import com.thulani.repository.impl.AuthorRepositoryImpl;
 import com.thulani.service.AuthorService;
+import org.springframework.stereotype.Service;
+
 import java.util.Set;
 
 /**
@@ -11,6 +13,7 @@ import java.util.Set;
  * Date: 2020-09-02
  */
 
+@Service
 public class AuthorServiceImpl implements AuthorService {
 
 

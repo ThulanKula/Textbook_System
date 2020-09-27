@@ -48,18 +48,18 @@ public class StudClassRepositoryImpl implements StudClassRepository {
         return null;
     }
 
-        @Override
-        public boolean delete (String ID){
-            StudClass studClass = read(ID);
-            if (studClass != null) {
-                this.studClassDB.remove(studClass);
-                return true;
-            }
-            return false;
+    @Override
+    public boolean delete (String ID){
+        StudClass studClass = read(ID);
+        if (studClass != null) {
+            this.studClassDB.remove(studClass);
+            return true;
         }
-
-        @Override
-        public Set<StudClass> getAll () {
-            return this.studClassDB;
-        }
+        return false;
     }
+
+    @Override
+    public Set<StudClass> getAll () {
+        return this.studClassDB;
+    }
+}

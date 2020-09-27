@@ -4,13 +4,15 @@ import com.thulani.entity.StudClass;
 import com.thulani.repository.StudClassRepository;
 import com.thulani.repository.impl.StudClassRepositoryImpl;
 import com.thulani.service.StudClassService;
+import org.springframework.stereotype.Service;
+
 import java.util.Set;
 
 /**
  * @Auhtor : Lukanyo Tando Nkohla
  * Student No. 218328877
  * **/
-
+@Service
 public class StudClassServiceImpl implements StudClassService {
 
     public static StudClassService service = null;
