@@ -35,7 +35,7 @@ public class TextbookController
         return textbookService.read(bookId);
     }
 
-    @PostMapping
+    @PostMapping("/update")
     public Textbook update(@RequestBody Textbook textbook)
     {
         return textbookService.update(textbook);
