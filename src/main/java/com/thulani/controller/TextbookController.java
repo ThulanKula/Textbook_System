@@ -32,14 +32,13 @@ public class TextbookController
     @GetMapping("/read/{bookId}")
     public  Textbook read(@PathVariable String bookId)
     {
-        return TextbookServiceImpl.getService().read(bookId);
+        return textbookService.read(bookId);
     }
 
     @PostMapping
     public Textbook update(@RequestBody Textbook textbook)
     {
-        Textbook updateTextbook = TextbookServiceImpl.getService().update(textbook);
-        return updateTextbook;
+        return textbookService.update(textbook);
     }
 
     @DeleteMapping("/delete/{bookId}")
