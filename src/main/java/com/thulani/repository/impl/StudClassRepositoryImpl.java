@@ -1,9 +1,9 @@
 package com.thulani.repository.impl;
-
 import com.thulani.entity.StudClass;
 import com.thulani.repository.StudClassRepository;
 
 
+import java.util.HashSet;
 import java.util.Set;
 
 /***
@@ -12,15 +12,22 @@ import java.util.Set;
  * */
 
 public class StudClassRepositoryImpl implements StudClassRepository {
-    public static StudClassRepository studClassRepository = null;
+
+    public static StudClassRepository repository = null;
     private Set<StudClass> studClassDB;
 
+    // Added by me
+    private StudClassRepositoryImpl()
+    {
+        this.studClassDB = new HashSet<StudClass>();
+    }
 
-    public static StudClassRepository studClassRepository() {
-        if (studClassRepository == null) {
-            studClassRepository = new StudClassRepositoryImpl();
+    public static StudClassRepository getRepository() {
+        if (repository == null)
+        {
+            repository = new StudClassRepositoryImpl();
         }
-        return studClassRepository();
+        return repository;
     }
 
     @Override
@@ -32,7 +39,7 @@ public class StudClassRepositoryImpl implements StudClassRepository {
     @Override
     public StudClass read(String ID) {
         for (StudClass studClass : this.studClassDB) {
-            if (studClass.getStudCourse().equalsIgnoreCase(ID))
+            if (studClass.getStudCourseId().equalsIgnoreCase(ID))
                 return studClass;
         }
         return null;
@@ -40,8 +47,9 @@ public class StudClassRepositoryImpl implements StudClassRepository {
 
     @Override
     public StudClass update(StudClass studClass) {
-        boolean deleteStudClass = delete(studClass.getStudCourse());
-        if (deleteStudClass) {
+        boolean deleteStudClass = delete(studClass.getStudCourseId());
+        if (deleteStudClass)
+        {
             this.studClassDB.add(studClass);
             return studClass;
         }
@@ -49,9 +57,11 @@ public class StudClassRepositoryImpl implements StudClassRepository {
     }
 
     @Override
-    public boolean delete (String ID){
+    public boolean delete (String ID)
+    {
         StudClass studClass = read(ID);
-        if (studClass != null) {
+        if (studClass != null)
+        {
             this.studClassDB.remove(studClass);
             return true;
         }
