@@ -26,13 +26,12 @@ public class StudClassController {
     @PostMapping("/create")
     public StudClass create(@RequestBody StudClass studClass){
         StudClass newstudClass = StudClassFactory.createStudClass(studClass.getStudCourse());
-        StudClass studClass1 = studClassService.create(newstudClass);
-        return studClass1;
+        return studClassService.create(newstudClass);
     }
 
-    @GetMapping("/read/{SudClass}")
-    public StudClass read (@PathVariable String studCourse){
-        return studClassService.read(studCourse);
+    @GetMapping("/read/{studCourseId}")
+    public StudClass read (@PathVariable String studCourseId){
+        return studClassService.read(studCourseId);
     }
 
     @GetMapping("/update")
@@ -40,11 +39,11 @@ public class StudClassController {
         return studClassService.update(studClass);
     }
 
-    @DeleteMapping("/delete/{studClasss}")
-    public boolean delete(@PathVariable String studCourse){
-        return studClassService.delete(studCourse);
+    @DeleteMapping("/delete/{studCourseId}")
+    public boolean delete(@PathVariable String studCourseId){
+        return studClassService.delete(studCourseId);
     }
-    @GetMapping("/all_StudClass")
+    @GetMapping("/all")
     public Set<StudClass> getAll(){
         return studClassService.getAll();
     }
