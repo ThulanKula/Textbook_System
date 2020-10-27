@@ -2,8 +2,8 @@ package com.thulani.service.impl;
 
 import com.thulani.entity.Author;
 import com.thulani.repository.AuthorRepository;
-import com.thulani.repository.impl.AuthorRepositoryImpl;
 import com.thulani.service.AuthorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -16,47 +16,25 @@ import java.util.Set;
 @Service
 public class AuthorServiceImpl implements AuthorService {
 
-
-    public static AuthorService authorService = null;
+    @Autowired
     private AuthorRepository authorRepository;
 
-    private AuthorServiceImpl() {
-        this.authorRepository = AuthorRepositoryImpl.getAuthorRepository();
-    }
-
-
-    public static AuthorService getAuthorService() {
-        if (authorService == null) {
-            authorService = new AuthorServiceImpl();
-        }
-        return authorService;
-    }
     @Override
-    public Set<Author> getAll() {
-        return this.authorRepository.getAll();
-    }
+    public Set<Author> getAll() { return (Set<Author>) this.authorRepository.findAll(); }
 
     @Override
-    public Author create(Author author) {
-
-        return this.authorRepository.create(author);
-    }
+    public Author create(Author author) { return this.authorRepository.save(author); }
 
     @Override
-    public Author read(String s) {
-
-        return this.authorRepository.read(s);
-    }
+    public Author read(String s) { return this.authorRepository.findById(s).orElseGet(null); }
 
     @Override
-    public Author update(Author author) {
-
-        return this.authorRepository.update(author);
-    }
+    public Author update(Author author) { return this.authorRepository.save(author); }
 
     @Override
     public boolean delete(String s) {
-
-        return this.authorRepository.delete(s);
+        this.authorRepository.deleteById(s);
+        if(this.authorRepository.existsById(s)) return false;
+        else return true;
     }
 }

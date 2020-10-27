@@ -1,6 +1,9 @@
 package com.thulani.repository;
 
 import com.thulani.entity.Author;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+
 import java.util.*;
 
 /*
@@ -9,6 +12,4 @@ import java.util.*;
 *
  */
 
-public interface AuthorRepository extends IRepository<Author, String>{
-    Set<Author> getAll();
-}
+public interface AuthorRepository extends CrudRepository<Author, String> {};

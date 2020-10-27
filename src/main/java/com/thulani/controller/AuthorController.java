@@ -29,18 +29,10 @@ public class AuthorController {
     }
 
     @GetMapping("/read/{authNumber}")
-    public Author read(@PathVariable String authNumber) {
-        Author readAuthor = AuthorServiceImpl.getAuthorService().read(authNumber);
-
-        return readAuthor;
-    }
+    public Author read(@PathVariable String authNumber) { return this.authorService.read(authNumber); }
 
     @PostMapping("/update")
-    public Author update(@RequestBody Author author){
-        Author updateAuthor = AuthorServiceImpl.getAuthorService().update(author);
-
-        return updateAuthor;
-    }
+    public Author update(@RequestBody Author author){ return this.authorService.update(author); }
 
     @GetMapping("/all_author")
     public Set<Author> getAll() {
