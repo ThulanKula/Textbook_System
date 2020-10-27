@@ -1,14 +1,7 @@
 package com.thulani.controller;
 
-/**
- *
- * @Author: Nacisha Jaftha
- * 215194616
- * Date: 2020-09-24
- *
- */
+import java.util.Set;
 
-import java.util.*;
 import com.thulani.entity.Department;
 import com.thulani.factory.DepartmentFactory;
 import com.thulani.service.impl.DepartmentServiceImpl;
@@ -30,18 +23,10 @@ public class DepartmentController {
     }
 
     @GetMapping("/read/{departmentNum}")
-    public Department read(@PathVariable String departmentNum) {
-        Department readDepartment = DepartmentServiceImpl.getDepartmentService().read(departmentNum);
-
-        return readDepartment;
-    }
+    public Department read(@PathVariable String departmentNum) { return this.departmentService.read(departmentNum); }
 
     @PostMapping("/update")
-    public Department update(@RequestBody Department department){
-        Department updateDepartment = DepartmentServiceImpl.getDepartmentService().update(department);
-
-        return updateDepartment;
-    }
+    public Department update(@RequestBody Department department){ return this.departmentService.update(department); }
 
     @GetMapping("/all_department")
     public Set<Department> getAll() {
