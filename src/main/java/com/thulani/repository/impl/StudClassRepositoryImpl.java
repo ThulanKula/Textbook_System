@@ -1,17 +1,17 @@
-package com.thulani.repository.impl;
-import com.thulani.entity.StudClass;
-import com.thulani.repository.StudClassRepository;
+//package com.thulani.repository.impl;
+//import com.thulani.entity.StudClass;
+//import com.thulani.repository.StudClassRepository;
 
 
-import java.util.HashSet;
-import java.util.Set;
+//import java.util.HashSet;
+//import java.util.Set;
 
 /***
  * @Author : Lukanyo Tando Nkohla
  * StudNo 218328877
  * */
 
-public class StudClassRepositoryImpl implements StudClassRepository {
+/*public class StudClassRepositoryImpl implements StudClassRepository {
 
     public static StudClassRepository repository = null;
     private Set<StudClass> studClassDB;
@@ -72,4 +72,4 @@ public class StudClassRepositoryImpl implements StudClassRepository {
     public Set<StudClass> getAll () {
         return this.studClassDB;
     }
-}
+}*/
