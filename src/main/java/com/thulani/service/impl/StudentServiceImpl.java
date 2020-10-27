@@ -2,11 +2,11 @@ package com.thulani.service.impl;
 
 import com.thulani.entity.Student;
 import com.thulani.repository.StudentRepository;
-import com.thulani.repository.impl.StudentRepositoryImpl;
 import com.thulani.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @Auhtor : Thulani Kula
@@ -17,40 +17,34 @@ import java.util.Set;
 @Service
 public class StudentServiceImpl implements StudentService {
 
-    public static StudentService service = null;
+   @Autowired
     private StudentRepository repository;
-
-    private StudentServiceImpl(){
-        this.repository = StudentRepositoryImpl.getStudentRepository();
-    }
-
-    public static StudentService getService(){
-        if (service == null) service = new StudentServiceImpl();
-        return service;
-    }
 
     @Override
     public Set<Student> getAll() {
-        return this.repository.getAll();
+
+        return this.repository.findAll().stream().collect(Collectors.toSet());
     }
 
     @Override
     public Student create(Student student) {
-        return this.repository.create(student);
+        return this.repository.save(student);
     }
 
     @Override
     public Student read(String s) {
-        return this.repository.read(s);
+        return this.repository.findById(s).orElse(null);
     }
 
     @Override
     public Student update(Student student) {
-        return this.repository.update(student);
+        return create(student);
     }
 
     @Override
     public boolean delete(String s) {
-        return this.repository.delete(s);
+        this.repository.deleteById(s);
+        if (this.repository.existsById(s)) return false;
+        return true;
     }
 }
