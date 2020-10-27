@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @Author: Avery Daniels
@@ -20,7 +21,7 @@ public class AuthorServiceImpl implements AuthorService {
     private AuthorRepository authorRepository;
 
     @Override
-    public Set<Author> getAll() { return (Set<Author>) this.authorRepository.findAll(); }
+    public Set<Author> getAll() { return this.authorRepository.findAll().stream().collect(Collectors.toSet()); }
 
     @Override
     public Author create(Author author) { return this.authorRepository.save(author); }
