@@ -35,11 +35,18 @@ public class StudentControllerTest {
         student = studentResponseEntity.getBody();
         System.out.println("Created : " + student);
         assertEquals(student.getStudNumber(), studentResponseEntity.getBody().getStudNumber());
+        assertEquals(student.getFirstName(), studentResponseEntity.getBody().getFirstName());
+        assertEquals(student.getLastName(), studentResponseEntity.getBody().getLastName());
 
     }
 
     @Test
     public void b_read() {
+        String studentUrl = url + "read/" + student.getStudNumber();
+        ResponseEntity<Student>studentResponseEntity = testRestTemplate.getForEntity(studentUrl, Student.class);
+        assertEquals(student.getStudNumber(), studentResponseEntity.getBody().getStudNumber());
+        assertEquals(student.getFirstName(), studentResponseEntity.getBody().getFirstName());
+        assertEquals(student.getLastName(), studentResponseEntity.getBody().getLastName());
     }
 
     @Test
