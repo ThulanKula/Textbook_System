@@ -7,9 +7,10 @@ package com.thulani.repository;
  */
 
 import com.thulani.entity.Textbook;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.Set;
+@Repository
+public interface TextbookRepository extends JpaRepository<Textbook, String> {
 
-public interface TextbookRepository extends IRepository<Textbook, String> {
-    Set<Textbook> getAll();
 }

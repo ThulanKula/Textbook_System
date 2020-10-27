@@ -13,6 +13,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import com.thulani.service.TextbookService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Set;
 
@@ -21,7 +22,8 @@ import static org.junit.Assert.*;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TextbookServiceImplTest {
 
-    private static TextbookService service = TextbookServiceImpl.getService();
+    @Autowired
+    private static TextbookService service;
     private static Textbook textbook = TextbookFactory.createTextbook("Harry Potter", 12, "Brand New", "9484545", 2, 12);
 
 

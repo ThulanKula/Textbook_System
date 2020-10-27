@@ -2,65 +2,66 @@ package com.thulani.service.impl;
 
 /**
  * @author aelmick
- * Des: StringHelper class
- * date: 05 September 2020
+ * Des: TextbookServiceImpl.java implement business rules(CRUD) of textbook entity
+ * created: 05 September 2020
+ * modified: 27 oct 2020
  */
 
 import com.thulani.entity.Textbook;
 import com.thulani.repository.TextbookRepository;
-import com.thulani.repository.impl.TextbookRepositoryImpl;
 import com.thulani.service.TextbookService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class TextbookServiceImpl implements TextbookService {
 
-    private  static TextbookService service = null;
+    @Autowired
     private TextbookRepository repository;
-
-    private TextbookServiceImpl()
-    {
-        this.repository = TextbookRepositoryImpl.getRepository();
-    }
-
-    public static TextbookService getService()
-    {
-        if (service == null)
-        {
-            service = new TextbookServiceImpl();
-        }
-        return service;
-    }
 
     @Override
     public Set<Textbook> getAll()
     {
-        return this.repository.getAll();
+        return this.repository.findAll().stream().collect(Collectors.toSet());
     }
 
     @Override
     public Textbook create(Textbook textbook)
     {
-        return this.repository.create(textbook);
+        return this.repository.save(textbook);
     }
 
     @Override
     public Textbook read(String s)
     {
-        return this.repository.read(s);
+        return this.repository.findById(s).orElseGet(null);
     }
 
     @Override
     public Textbook update(Textbook textbook)
     {
-        return this.repository.update(textbook);
+        if (this.repository.existsById(textbook.getBookId()))
+        {
+            return this.repository.save(textbook);
+        }
+        else {
+            return null;
+        }
     }
 
     @Override
     public boolean delete(String s)
     {
-        return this.repository.delete(s);
+        this.repository.deleteById(s);
+        if (this.repository.existsById(s))
+        {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 }
