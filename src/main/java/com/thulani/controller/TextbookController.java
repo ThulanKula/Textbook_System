@@ -47,7 +47,7 @@ public class TextbookController
         return textbookService.delete(bookId);
     }
 
-    @GetMapping("all")
+    @GetMapping("/all")
     public Set<Textbook> getall()
     {
         return textbookService.getAll();
