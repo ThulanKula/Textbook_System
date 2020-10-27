@@ -9,8 +9,9 @@ import java.util.Objects;
 
 /**
  * @author Airmick
- * Desc: Entity Textbook with Builder pattern
- * date: 24 june 2020
+ * Desc: Entity Textbook with Builder pattern and spring boot
+ * created: 24 june 2020
+ * modified: 27 oct 2020
  */
 
 

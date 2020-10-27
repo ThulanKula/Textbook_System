@@ -2,8 +2,9 @@ package com.thulani.service.impl;
 
 /**
  * @author aelmick
- * Des: StringHelper class
- * date: 05 September 2020
+ * Des: TextbookServiceImpl.java implement business rules(CRUD) of textbook entity
+ * created: 05 September 2020
+ * modified: 27 oct 2020
  */
 
 import com.thulani.entity.Textbook;
