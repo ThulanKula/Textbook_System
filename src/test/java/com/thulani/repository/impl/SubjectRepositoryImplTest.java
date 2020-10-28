@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import com.thulani.repository.SubjectRepository;
 
+/*
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
 public class SubjectRepositoryImplTest {
@@ -51,4 +52,4 @@ public class SubjectRepositoryImplTest {
         boolean del = subjectRepository.delete(subject.getSubNumber());
         Assert.assertTrue(del);
     }
-}
+} */
