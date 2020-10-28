@@ -4,11 +4,11 @@ package com.thulani.repository;
  *  Student No. 218328877
  */
 import com.thulani.entity.StudClass;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Set;
 
-public interface StudClassRepository extends IRepository<StudClass, String>{
+public interface StudClassRepository extends JpaRepository<StudClass, String> {
 
-    Set<StudClass> getAll();
 }
 

@@ -1,7 +1,14 @@
 package com.thulani.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.util.Objects;
+
+@Entity
 public class StudClass {
     private String studCourse;
+
+    @Id
     private String studCourseId;
 
     // added by me
@@ -57,5 +64,18 @@ public class StudClass {
         {
             return new StudClass(this);
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StudClass studClass = (StudClass) o;
+        return studCourseId.equals(studClass.studCourseId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(studCourseId);
     }
 }

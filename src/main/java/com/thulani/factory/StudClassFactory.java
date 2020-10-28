@@ -1,7 +1,7 @@
 package com.thulani.factory;
 
-import com.thulani.Util.GenericHelper;
-import com.thulani.Util.StringHelper;
+import com.thulani.util.GenericHelper;
+import com.thulani.util.StringHelper;
 import com.thulani.entity.StudClass;
 
 public class StudClassFactory
