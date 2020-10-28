@@ -2,6 +2,7 @@ package com.thulani.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class Department {
@@ -52,5 +53,18 @@ public class Department {
             return new Department (this);
         }
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Department department = (Department) o;
+        return departmentNum.equals(department.departmentNum);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(departmentNum);
     }
 }
