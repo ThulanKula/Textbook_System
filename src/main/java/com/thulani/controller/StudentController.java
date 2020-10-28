@@ -1,10 +1,14 @@
 package com.thulani.controller;
 
 import com.thulani.entity.Student;
+import com.thulani.entity.Subject;
 import com.thulani.factory.StudentFactory;
+import com.thulani.service.SubjectService;
 import com.thulani.service.impl.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Set;
 
 /**
  * @Author : Thulani Kula 217026443
@@ -41,6 +45,7 @@ public class StudentController {
         return studentService.delete(studNumber);
     }
 
+    @GetMapping("all")
+    public Set<Subject> getall(){return SubjectService.getAll();}
+    }
 
-
-}

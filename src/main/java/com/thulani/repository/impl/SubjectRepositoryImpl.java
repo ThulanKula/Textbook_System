@@ -1,8 +1,10 @@
 package com.thulani.repository.impl;
 
 import com.thulani.entity.Subject;
+import com.thulani.entity.Textbook;
 import com.thulani.repository.SubjectRepository;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /***
@@ -11,10 +13,16 @@ import java.util.Set;
  *
  * */
 
+/*
+@Deprecated
 public class SubjectRepositoryImpl implements SubjectRepository {
     public static SubjectRepository subjRepository = null;
     private Set<Subject> subjectDB;
 
+    private SubjectRepositoryImpl()
+    {
+        this.subjectDB = new HashSet<Subject>();
+    }
 
     public static SubjectRepository getSubjRepository(){
         if(subjRepository == null) {
@@ -63,4 +71,4 @@ public class SubjectRepositoryImpl implements SubjectRepository {
         return this.subjectDB;
     }
 
-}
+} */
