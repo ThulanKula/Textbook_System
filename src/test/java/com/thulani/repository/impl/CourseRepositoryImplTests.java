@@ -1,8 +1,10 @@
+/*
 package com.thulani.repository.impl;
-/**
+*
  * Author: Anastasia Abrahams
  * Date: 30 August 2020
- */
+
+
 import com.thulani.entity.Course;
 import com.thulani.factory.CourseFactory;
 import org.junit.FixMethodOrder;
@@ -46,3 +48,4 @@ public class CourseRepositoryImplTests {
         System.out.println("All:" + courseRepository.getAll());
     }
 }
+*/
