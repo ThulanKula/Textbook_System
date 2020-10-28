@@ -1,4 +1,11 @@
 package com.thulani.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.Objects;
+import java.util.Set;
+
 /**
  *
  * Author: Avery Daniels
@@ -6,11 +13,15 @@ package com.thulani.entity;
  * Desc: This class is an com.thulani.entity of an Author which contains a author number, name (first and last)
  *
  * */
-
+@Entity
 public class Author {
-    private String authNumber
-            , authFirstName
-            , authLastName;
+    @Id
+    private String authNumber;
+    private String authFirstName;
+    private String authLastName;
+    @OneToMany
+    private Set<Textbook> textbooks;
+    protected Author() {};
 
     private Author(Builder builder) {
         this.authNumber = builder.authNumber;
@@ -62,5 +73,20 @@ public class Author {
         public Author Build(){
             return new Author(this);
         }
+
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Author author = (Author) o;
+        return authNumber.equals(author.authNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(authNumber);
     }
 }

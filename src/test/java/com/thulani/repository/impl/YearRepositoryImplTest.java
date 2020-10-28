@@ -6,7 +6,7 @@ import com.thulani.factory.YearFactory;
 import org.junit.Assert;
 import com.thulani.repository.YearRepository;
 import static org.junit.Assert.*;
-
+/*
 public class YearRepositoryImplTest {
 
    private static YearRepository yearRepository = YearRepositoryImpl.getYearRepository();
@@ -45,4 +45,4 @@ public class YearRepositoryImplTest {
     @Test
     public void delete() {
     }
-}
+}*/

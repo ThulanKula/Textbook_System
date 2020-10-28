@@ -1,19 +1,23 @@
 package com.thulani.entity;
 
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
- * @Author: Thulani Kula
+ * Author: Thulani Kula
  * Date: 21 June 2020
  * this year class refers to the year of study and not the year date.
  *  do not confuse the two.
  */
 
-public class Year implements Serializable {
+@Entity
+public class Year {
 
+    @Id
     private String year;
 
-    private Year() {
+    protected Year() {
     }
 
     private Year (Builder builder){

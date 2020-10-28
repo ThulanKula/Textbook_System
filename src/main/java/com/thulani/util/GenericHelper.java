@@ -1,4 +1,4 @@
-package com.thulani.Util;
+package com.thulani.util;
 
 import java.util.UUID;
 

@@ -7,6 +7,8 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import com.thulani.service.AuthorService;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.Set;
 
 /**
@@ -20,7 +22,8 @@ import static org.junit.Assert.*;
 
 public class AuthorServiceImplTest {
 
-    private static AuthorService authorService = AuthorServiceImpl.getAuthorService();
+    @Autowired
+    private static AuthorService authorService;
     private static Author author = AuthorFactory.createAuthor("1010", "Arthur C.", "Clarke");
 
     @Test

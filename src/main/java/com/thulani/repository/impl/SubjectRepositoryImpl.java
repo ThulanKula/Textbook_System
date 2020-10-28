@@ -13,6 +13,8 @@ import java.util.Set;
  *
  * */
 
+/*
+@Deprecated
 public class SubjectRepositoryImpl implements SubjectRepository {
     public static SubjectRepository subjRepository = null;
     private Set<Subject> subjectDB;
@@ -69,4 +71,4 @@ public class SubjectRepositoryImpl implements SubjectRepository {
         return this.subjectDB;
     }
 
-}
+} */

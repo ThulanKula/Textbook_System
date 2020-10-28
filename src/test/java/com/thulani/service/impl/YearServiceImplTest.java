@@ -7,6 +7,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import com.thulani.service.YearService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Set;
 
@@ -14,27 +15,26 @@ import static org.junit.Assert.*;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class YearServiceImplTest {
 
-    private static YearService service = YearServiceImpl.getService();
+    @Autowired
+    private static YearService service;
     private static Year year = YearFactory.createYear("2");
 
     @Test
     public void d_getAll() {
         Set<Year> years = service.getAll();
-        assertEquals("1", years.size());
-        System.out.println("Year: " + years);
+        assertNotNull(years);
     }
 
     @Test
     public void a_create() {
         Year created = service.create(year);
-        Assert.assertEquals(year.getYear(), created.getYear());
-        System.out.println("Created: " + created);
+        assertEquals(year.getYear(), created.getYear());
     }
 
     @Test
     public void b_read() {
         Year read = service.read(year.getYear());
-        System.out.println("Read: " + read);
+        assertNotNull(read);
     }
 
     @Test

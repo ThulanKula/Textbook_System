@@ -5,7 +5,7 @@ package com.thulani.repository;
  *  Date : 25 August 2020
  *
  * **/
-
+@Deprecated
 public interface IRepository <Type, ID> {
     Type create (Type type);
     Type read (ID id);

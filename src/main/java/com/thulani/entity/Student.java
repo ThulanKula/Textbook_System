@@ -1,23 +1,28 @@
 package com.thulani.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
- *
  * @Author: Thulani Kula
  * Date: 21 June 2020
  * Desc: This class is an com.thulani.entity of a student which contains a student number, name (first and last) and an email address
  * which can be derived from the student number and be concatenated with a string = "@mycput.ac.za"
  *
- * */
+ */
 
+@Entity
 public class Student implements Serializable {
+
+    @Id
     private String studNumber;
     private String firstName;
     private String lastName;
     private String email;
 
-    private Student() {
+    protected Student() {
     }
 
     private Student(Builder builder) {

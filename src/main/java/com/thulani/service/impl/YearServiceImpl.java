@@ -2,11 +2,10 @@ package com.thulani.service.impl;
 
 import com.thulani.entity.Year;
 import com.thulani.repository.YearRepository;
-import com.thulani.repository.impl.YearRepositoryImpl;
 import com.thulani.service.YearService;
 import org.springframework.stereotype.Service;
-
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @Auhtor : Thulani Kula
@@ -17,40 +16,32 @@ import java.util.Set;
 @Service
 public class YearServiceImpl implements YearService {
 
-    public static YearService service = null;
     private YearRepository repository;
-
-    private YearServiceImpl(){
-        this.repository = YearRepositoryImpl.getYearRepository();
-    }
-
-    public static YearService getService(){
-        if (service == null) service = new YearServiceImpl();
-        return service;
-    }
 
     @Override
     public Set<Year> getAll() {
-        return this.repository.getAll();
+        return this.repository.findAll().stream().collect(Collectors.toSet());
     }
 
     @Override
     public Year create(Year year) {
-        return this.repository.create(year);
+        return this.repository.save(year);
     }
 
     @Override
     public Year read(String s) {
-        return this.repository.read(s);
+        return this.repository.findById(s).orElse(null);
     }
 
     @Override
     public Year update(Year year) {
-        return this.repository.update(year);
+        return create(year);
     }
 
     @Override
     public boolean delete(String s) {
-        return this.repository.delete(s);
+       this.repository.deleteById(s);
+       if (this.repository.existsById(s)) return false;
+       return true;
     }
 }

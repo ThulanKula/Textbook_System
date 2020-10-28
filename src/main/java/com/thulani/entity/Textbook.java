@@ -1,16 +1,27 @@
 package com.thulani.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * @author Airmick
- * Desc: Entity Textbook with Builder pattern
- * date: 24 june 2020
+ * Desc: Entity Textbook with Builder pattern and spring boot
+ * created: 24 june 2020
+ * modified: 27 oct 2020
  */
 
-public class Textbook implements Serializable
+
+@Entity
+public class Textbook //implements Serializable
 {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private String bookId;
+
     private String bookName;
     private int bookEdition;
     private String bookDescription;
@@ -18,7 +29,7 @@ public class Textbook implements Serializable
     private int bookVolume;
     private double bookPrice;
 
-    private Textbook(){}
+    protected Textbook(){}
 
     private Textbook(Builder builder)
     {
@@ -131,7 +142,7 @@ public class Textbook implements Serializable
             this.bookPrice = bookPrice;
             return this;
         }
-        // gives copy of the com.thulani.entity
+
         public Builder copy(Textbook textbook)
         {
             this.bookId = textbook.bookId;
@@ -149,5 +160,18 @@ public class Textbook implements Serializable
             return new Textbook(this);
         }
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Textbook textbook = (Textbook) o;
+        return bookId.equals(textbook.bookId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bookId);
     }
 }

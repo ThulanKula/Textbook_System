@@ -1,6 +1,6 @@
 package com.thulani.entity;
 
-import com.thulani.Util.GenericHelper;
+import com.thulani.util.GenericHelper;
 import org.junit.Before;
 import org.junit.Test;
 

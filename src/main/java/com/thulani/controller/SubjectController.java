@@ -6,6 +6,8 @@ import com.thulani.service.impl.SubjectServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Set;
+
 /*
  * @Author: Apiwe Xozwa 214175863
  * Date: 26 Sept 2020
@@ -29,8 +31,8 @@ public class SubjectController {
         return subjectService.read(subjectNumber);
     }
 
-    @GetMapping("/update")
-    public Subject update(@PathVariable Subject subject){
+    @PostMapping("/update")
+    public Subject update(@RequestBody Subject subject){
         return subjectService.update(subject);
     }
 
@@ -38,4 +40,7 @@ public class SubjectController {
     public  boolean delete(@PathVariable String subjectNumber){
         return subjectService.delete(subjectNumber);
     }
+
+    @GetMapping("/all")
+    public Set<Subject> getall(){return subjectService.getAll();}
 }

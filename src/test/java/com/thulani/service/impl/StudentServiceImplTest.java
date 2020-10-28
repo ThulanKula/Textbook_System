@@ -1,6 +1,7 @@
 package com.thulani.service.impl;
 
 import com.thulani.entity.Student;
+import com.thulani.entity.Year;
 import com.thulani.factory.StudentFactory;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
@@ -15,31 +16,33 @@ import static org.junit.Assert.*;
 
 public class StudentServiceImplTest {
 
-    private static StudentService service = StudentServiceImpl.getService();
+    private static StudentService service;
     private static Student student = StudentFactory.createStudent("217026", "Thulani", "Kula");
 
     @Test
     public void d_getAll() {
         Set<Student> student = service.getAll();
-        assertEquals(1, student.size());
-        System.out.println("All students: " + student);
+       assertNotNull(student);
     }
 
     @Test
     public void a_create() {
         Student created = service.create(student);
-        Assert.assertEquals(created.getStudNumber(), created.getFirstName(), created.getLastName());
-        System.out.println("Created: " + created);
+        assertEquals(student.getStudNumber(), created.getStudNumber());
+        assertEquals(student.getFirstName(), created.getFirstName());
     }
 
     @Test
     public void b_read() {
-       // Student read = service.read(student.getStudNumber(), student.getFirstName(), student.getLastName());
-       // System.out.println("Read: " + read);
+        Student read = service.read(student.getStudNumber());
+        assertNotNull(read);
     }
 
     @Test
     public void c_update() {
+        Student updated = new Student.Builder().setStudNumber("21026").setFirstName("Thulani").setLastName("Kula").build();
+        updated = service.update(updated);
+        System.out.println("Updated: " + updated);
         
     }
 
