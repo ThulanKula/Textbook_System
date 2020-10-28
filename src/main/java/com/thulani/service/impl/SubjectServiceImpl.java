@@ -2,12 +2,10 @@ package com.thulani.service.impl;
 
 import com.thulani.entity.Subject;
 import com.thulani.repository.SubjectRepository;
+import com.thulani.repository.impl.SubjectRepositoryImpl;
 import com.thulani.service.SubjectService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * Author: Apiwe Xozwa
@@ -15,40 +13,41 @@ import java.util.stream.Collectors;
  *
  */
 
-@Service
 public class SubjectServiceImpl implements SubjectService {
-
-    @Autowired
+    public static SubjectService service = null;
     private SubjectRepository repository;
+
+    private SubjectServiceImpl(){
+        this.repository = SubjectRepositoryImpl.getSubjRepository();
+    }
+
+    public static SubjectService getService(){
+        if(service == null) service = new SubjectServiceImpl();
+        return service;
+    }
 
     @Override
     public Set<Subject> getAll() {
-        return this.repository.findAll().stream().collect(Collectors.toSet());
+        return this.repository.getAll();
     }
 
     @Override
     public Subject create(Subject subject) {
-        return this.repository.save(subject);
+        return this.repository.create(subject);
     }
 
     @Override
     public Subject read(String s) {
-        return this.repository.findById(s).orElseGet(null);
+        return this.repository.read(s);
     }
 
     @Override
     public Subject update(Subject subject) {
-        if(this.repository.existsById(subject.getSubNumber()))
-           return this.repository.save(subject);
-        return null;
+        return this.repository.update(subject);
     }
 
     @Override
     public boolean delete(String s) {
-        this.repository.deleteById(s);
-        if(this.repository.existsById(s))
-            return false;
-        else
-            return true;
+        return this.repository.delete(s);
     }
 }

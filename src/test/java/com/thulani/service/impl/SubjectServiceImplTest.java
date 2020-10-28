@@ -5,7 +5,6 @@ import com.thulani.factory.SubjectFactory;
 import org.junit.Assert;
 import org.junit.Test;
 import com.thulani.service.SubjectService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Set;
 
@@ -13,8 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 public class SubjectServiceImplTest {
 
-    @Autowired
-    private static SubjectService service;
+    private static SubjectService service = SubjectServiceImpl.getService();
     private static Subject subject = SubjectFactory.createSubject("310285", "Networking");
 
     @Test
