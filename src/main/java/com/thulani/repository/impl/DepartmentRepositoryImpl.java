@@ -4,7 +4,7 @@ import com.thulani.entity.Department;
 import com.thulani.repository.DepartmentRepository;
 
 import java.util.Set;
-
+/*
 public class DepartmentRepositoryImpl implements DepartmentRepository {
     public static DepartmentRepository departmentRepository = null;
     private Set<Department> departmentDB;
@@ -55,4 +55,4 @@ public class DepartmentRepositoryImpl implements DepartmentRepository {
             return true;
         }
         return false;*/
-}
+//}

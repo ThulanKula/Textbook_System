@@ -1,10 +1,19 @@
 package com.thulani.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Department {
+
+    @Id
     private String departmentNum;
     private String departmentName;
 
-    public Department(Department.Builder builder) {
+    protected Department () {
+    }
+
+    private Department(Department.Builder builder) {
         this.departmentNum = builder.departmentNum;
         this.departmentName = builder.departmentName;
     }
