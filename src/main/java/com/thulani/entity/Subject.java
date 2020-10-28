@@ -1,5 +1,11 @@
 package com.thulani.entity;
 
+/**
+ * @Author: Apiwe Xozwa
+ * Date: 26 October 2020
+ *
+ */
+
 import antlr.preprocessor.PreprocessorTokenTypes;
 
 import javax.persistence.Entity;
