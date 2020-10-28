@@ -4,9 +4,18 @@
  */
 package com.thulani.entity;
 
-//Proper one
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.util.Objects;
+
+@Entity
 public class Course {
-    private String courseCode, courseName;
+
+    @Id
+    private String courseCode;
+    private String courseName;
+
+    protected Course(){}
 
     private Course(Builder builder){
         this.courseCode = builder.courseCode;
@@ -45,4 +54,17 @@ public class Course {
             return new Course(this);
         }
     }//End of Builder class
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Course course = (Course) o;
+        return courseCode.equals(course.courseCode);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(courseCode);
+    }
 }

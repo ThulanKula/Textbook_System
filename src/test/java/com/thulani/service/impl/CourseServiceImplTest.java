@@ -6,13 +6,17 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import com.thulani.service.CourseService;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import static org.junit.Assert.*;
 
 import java.util.Set;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CourseServiceImplTest {
-    private static CourseService service = CourseServiceImpl.getCourse();
+
+    @Autowired
+    private CourseService service;
     private static Course course = CourseFactory.buildCourse("Biomedical Science");
 
     @Test
