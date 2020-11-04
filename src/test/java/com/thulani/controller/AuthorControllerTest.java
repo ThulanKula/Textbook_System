@@ -12,69 +12,68 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.client.HttpClientErrorException;
 
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-@SpringBootTest(classes = Author.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner.class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AuthorControllerTest {
 
+    private static Author author = AuthorFactory.createAuthor("1010", "Louise", "Smith");
+
     @Autowired
     private TestRestTemplate testRestTemplate;
-    private int port;
-    private String getURL() {
-        return "http://localhost: " + port;
-    }
+    private String baseUrl = "http://localhost:8080/textbook/";
+
 
     @Test
     public void a_testCreate() {
-        Author author = AuthorFactory.createAuthor("1010", "Louise", "Smith");
-        ResponseEntity<Author> postResponse = testRestTemplate.postForEntity(getURL(), author, Author.class);
+        String url = baseUrl + "create";
+        System.out.println("URL: "+ author);
+        ResponseEntity<Author> postResponse = testRestTemplate.postForEntity(url, author, Author.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
+        author = postResponse.getBody();
+        System.out.println("Saved data: "+ author);
+        assertEquals(author.getAuthNumber(), postResponse.getBody().getAuthNumber());
     }
 
     @Test
-    public void b_findById() {
-        Author searchFor = testRestTemplate.getForObject(getURL() + "/find/"+"1010", Author.class);
-
-        assertNotNull(searchFor);
+    public void b_read() {
+        String url = baseUrl+ "read"+author.getAuthNumber();
+        System.out.println("URL: "+url);
+        ResponseEntity<Author> responseEntity = testRestTemplate.getForEntity(url, Author.class);
+        assertEquals(author.getAuthNumber(), responseEntity.getBody().getAuthNumber());
     }
 
     @Test
     public void c_testUpdate() {
-        Author update = testRestTemplate.getForObject(getURL()+"/find/" + "1010", Author.class);
         Author.Builder update2 = new Author.Builder().setAuthFirstName("John").setAuthLastName("Doe");
-        testRestTemplate.put(getURL() + "/update/"+"1010",update2);
-        Author updated = testRestTemplate.getForObject(getURL() + "/update/"+"1010",Author.class);
-
-        assertNotNull(updated);
+        String url = baseUrl+"update";
+        System.out.println("URL: "+url);
+        System.out.println("Post data: "+update2);
+        ResponseEntity<Author> responseEntity = testRestTemplate.postForEntity(url,update2, Author.class);
+        assertEquals(author.getAuthNumber(), responseEntity.getBody().getAuthNumber());
     }
 
     @Test
     public void d_testGetAll() {
+        String url = baseUrl+"all";
+        System.out.println("URL: "+url);
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, headers);
-        ResponseEntity<String> response = testRestTemplate.exchange(getURL() + "/getAll", HttpMethod.GET, entity, String.class);
-        assertNotNull(response.getBody());
+        ResponseEntity<String> response = testRestTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        System.out.println(response);
+        System.out.println(response.getBody());
     }
 
     @Test
     public void f_testDelete() {
 
-
-        try {
-            Author author = testRestTemplate.getForObject(getURL() + "/find/" + "1010", Author.class);
-            TestCase.assertNotNull(author);
-
-            testRestTemplate.delete(getURL() + "/delete/" + "1010");
-            author = testRestTemplate.getForObject(getURL() + "/find/" + "1010", Author.class);
-            System.out.println(author);
-        } catch (final HttpClientErrorException e) {
-            assertEquals(e.getStatusCode(), HttpStatus.NOT_FOUND);
-        }
+        String url = baseUrl+"delete/"+author.getAuthNumber();
+        System.out.println("URL: "+url);
+        testRestTemplate.delete(url);
     }
 }

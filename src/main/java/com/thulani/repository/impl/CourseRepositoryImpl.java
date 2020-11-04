@@ -1,10 +1,11 @@
-package com.thulani.repository.impl;
+/**package com.thulani.repository.impl;
 /**
  * Author: Anastasia Abrahams
  * Date: 25 August 2020
  * CourseRepositoryImpl is a concrete class that overrides all abstract methods in IRepository and CourseRepository
  *
  */
+/**
 import com.thulani.entity.Course;
 import com.thulani.repository.CourseRepository;
 import java.util.HashSet;
@@ -20,10 +21,12 @@ public class CourseRepositoryImpl implements CourseRepository {
     }
 
     /**Implementing singleton so that there is only one access to the courseDB
-     *
+     * Ensures that a class has one and only one instance
      */
+/**
     public static CourseRepository getCourseRepository(){
-        if (courseRepository == null) courseRepository = new CourseRepositoryImpl();
+        if (courseRepository == null)
+            courseRepository = new CourseRepositoryImpl();
         return courseRepository;
     }
 
@@ -67,3 +70,4 @@ public class CourseRepositoryImpl implements CourseRepository {
         return this.courseDB;
     }
 }
+*/

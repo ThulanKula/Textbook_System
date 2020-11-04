@@ -5,12 +5,16 @@ import com.thulani.factory.DepartmentFactory;
 import com.thulani.service.DepartmentService;
 import org.junit.Assert;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 
 public class DepartmentServiceImplTest {
-    private static DepartmentService service = DepartmentServiceImpl.getDepartmentService();
+
+    @Autowired
+    private static DepartmentService service;
     private static Department department = DepartmentFactory.createDepartment("1101", "Applied Design");
 
     @Test
