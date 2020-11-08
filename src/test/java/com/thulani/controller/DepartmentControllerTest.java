@@ -73,7 +73,7 @@ public class DepartmentControllerTest {
 
     @Test
     public void e_getAllTest() {
-        String url = baseURL + "all";
+        String url = baseURL + "all_department";
         System.out.println("URL: " + url);
         HttpHeaders head = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<>(null, head);
