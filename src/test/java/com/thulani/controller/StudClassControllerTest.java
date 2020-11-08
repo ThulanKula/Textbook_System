@@ -29,7 +29,7 @@ public class StudClassControllerTest {
 
     @Autowired
     private TestRestTemplate testRestTemplate;
-    private String baseUrl = "http://localhost:8080/textbook/";
+    private String baseUrl = "http://localhost:8080/textbook/StudClass";
 
 
     @Test
