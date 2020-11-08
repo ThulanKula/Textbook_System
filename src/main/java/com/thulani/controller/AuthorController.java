@@ -15,7 +15,7 @@ import java.util.*;
  *
  */
 @RestController
-@RequestMapping("/Author")
+@RequestMapping("/author")
 public class AuthorController {
 
     @Autowired
@@ -23,14 +23,14 @@ public class AuthorController {
 
     @PostMapping("/create")
     public Author create(@RequestBody Author author) {
-        Author newAuthor = AuthorFactory.createAuthor(author.getAuthNumber(), author.getAuthFirstName(), author.getAuthLastName());
+        Author newAuthor = AuthorFactory.createAuthor(author.getAuthFirstName(), author.getAuthLastName());
         return authorService.create(newAuthor);
     }
 
     @GetMapping("/read/{authNumber}")
     public Author read(@PathVariable String authNumber) { return this.authorService.read(authNumber); }
 
-    @PutMapping("/update")
+    @PostMapping("/update")
     public Author update(@RequestBody Author author){ return this.authorService.update(author); }
 
     @GetMapping("/all")
