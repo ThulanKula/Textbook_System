@@ -24,17 +24,16 @@ public class AuthorController {
     @PostMapping("/create")
     public Author create(@RequestBody Author author) {
         Author newAuthor = AuthorFactory.createAuthor(author.getAuthNumber(), author.getAuthFirstName(), author.getAuthLastName());
-
         return authorService.create(newAuthor);
     }
 
     @GetMapping("/read/{authNumber}")
     public Author read(@PathVariable String authNumber) { return this.authorService.read(authNumber); }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Author update(@RequestBody Author author){ return this.authorService.update(author); }
 
-    @GetMapping("/all_author")
+    @GetMapping("/all")
     public Set<Author> getAll() {
         return authorService.getAll();
     }
