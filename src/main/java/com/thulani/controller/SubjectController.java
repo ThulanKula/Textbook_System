@@ -21,7 +21,7 @@ public class SubjectController {
         return subjectService.create(newSubject);
     }
 
-    @GetMapping("/read{subjectNumber}/")
+    @GetMapping("/read/{subjectNumber}")
     public Subject read(@PathVariable String subjectNumber){
         return subjectService.read(subjectNumber);
     }
