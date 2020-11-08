@@ -49,6 +49,12 @@ public class Department {
             return this;
         }
 
+        public Department.Builder copy(Department department) {
+            this.departmentNum = department.departmentNum;
+            this.departmentName = department.getDepartmentName();
+            return this;
+        }
+
         public Department build () {
             return new Department (this);
         }
