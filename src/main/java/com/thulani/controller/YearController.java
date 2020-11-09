@@ -24,18 +24,17 @@ public class YearController {
     @PostMapping("/create")
     public Year create(@RequestBody Year year){
         Year newYear = YearFactory.createYear(year.getYear());
-       Year year2 = yearService.create(newYear);
-        return year2;
+        return yearService.create(newYear);
     }
 
    @GetMapping("/read/{year}")
    public Year read (@PathVariable String year){
-        return yearService.read(year);
+        return this.yearService.read(year);
    }
 
    @GetMapping("/update")
    public Year update (@RequestBody Year year){
-        return yearService.update(year);
+        return this.yearService.update(year);
    }
 
    @DeleteMapping("/delete/{year}")

@@ -24,7 +24,7 @@ import static org.junit.Assert.assertNotNull;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
 public class CourseControllerTest {
-    private static Course course = CourseFactory.buildCourse("Nursing");
+    private static Course course = CourseFactory.buildCourse("Physiotherapy");
     private static String SECURITY_USERNAME = "student";
     private static String SECURITY_PASSWORD = "2171000";
 
@@ -37,7 +37,9 @@ public class CourseControllerTest {
         String url = baseURL + "create";
         System.out.println("URL: " + url);
         System.out.println("Post data: " + course);
-        ResponseEntity<Course> postResponse = restTemplate.postForEntity(url, course, Course.class);
+        ResponseEntity<Course> postResponse = restTemplate
+                .withBasicAuth(SECURITY_USERNAME,SECURITY_PASSWORD)
+                .postForEntity(url, course, Course.class);
         assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
         course = postResponse.getBody();
@@ -46,43 +48,49 @@ public class CourseControllerTest {
     }
 
     @Test
-    @Ignore
     public void bread()
     {
         String url = baseURL +"read/"+ course.getCourseCode();
         System.out.println("URL: " +url);
-        ResponseEntity<Course> responseEntity = restTemplate.getForEntity(url, Course.class);
+        ResponseEntity<Course> responseEntity = restTemplate
+                .withBasicAuth(SECURITY_USERNAME,SECURITY_PASSWORD)
+                .getForEntity(url, Course.class);
         assertEquals(course.getCourseCode(), responseEntity.getBody().getCourseCode());
     }
 
     @Test
-    @Ignore
     public void cupdate(){
         Course updated = new Course.Builder().copy(course)
-                .setCourseName("Advanced Nursing").build();
+                .setCourseName("Advanced Physiotherapy").build();
         String url = baseURL + "update";
         System.out.println("URL: " +url);
         System.out.println("Updated data: " +updated);
-        ResponseEntity<Course> responseEntity = restTemplate.postForEntity(url, updated, Course.class);
+        ResponseEntity<Course> responseEntity = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .postForEntity(url, updated, Course.class);
         assertEquals(course.getCourseCode(), responseEntity.getBody().getCourseCode());
     }
 
     @Test
-    @Ignore
     public void dgetall() {
         String url = baseURL + "all data";
         System.out.println("URL: " +url);
         HttpHeaders httpHeaders = new HttpHeaders();
         HttpEntity<String> httpEntity = new HttpEntity<>(null, httpHeaders);
-        ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, httpEntity, String.class);
+        ResponseEntity<String> responseEntity = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .exchange(url, HttpMethod.GET, httpEntity, String.class);
         System.out.println(responseEntity);
         System.out.println(responseEntity.getBody());
     }
 
     @Test
+    @Ignore
     public void edelete(){
         String url = baseURL +"delete/"+ course.getCourseCode();
         System.out.println("URL: " +url);
-        restTemplate.delete(url);
+        restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .delete(url);
     }
 }

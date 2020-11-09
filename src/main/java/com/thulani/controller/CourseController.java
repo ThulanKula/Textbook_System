@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.*;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/course")
+@RequestMapping("Textbook_System/course")
 
 public class CourseController {
     @Autowired
     private CourseServiceImpl courseService;
 
-    @PostMapping
+    @PostMapping("/create")
     public Course create(@RequestBody Course course){
         Course courseNew = CourseFactory.buildCourse(course.getCourseName());
         return courseService.create(courseNew);
