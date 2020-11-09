@@ -21,15 +21,19 @@ import static org.junit.Assert.*;
 public class StudentControllerTest {
 
     private static Student student = StudentFactory.createStudent("2170264", "John", "Roux");
+    private static final String USER_ROLE ="USER";
+    private static final String USER_PASSWORD = "2171000";
 
     @Autowired
     private TestRestTemplate testRestTemplate;
-    private  String url = "http://localhost:8080/student/";
+    private  String url = "http://localhost:8080/textbook/student/";
 
     @Test
     public void a_create() {
         String studentUrl = url + "create";
         ResponseEntity<Student> studentResponseEntity = testRestTemplate.postForEntity(studentUrl, student, Student.class);
+        ResponseEntity<Student> postResponse = testRestTemplate.withBasicAuth(USER_ROLE, USER_PASSWORD)
+                .postForEntity(url, student, Student.class);
         assertNotNull(studentResponseEntity);
         assertNotNull(studentResponseEntity.getBody());
         student = studentResponseEntity.getBody();
@@ -44,6 +48,8 @@ public class StudentControllerTest {
     public void b_read() {
         String studentUrl = url + "read/" + student.getStudNumber();
         ResponseEntity<Student>studentResponseEntity = testRestTemplate.getForEntity(studentUrl, Student.class);
+        ResponseEntity<Student> postResponse = testRestTemplate.withBasicAuth(USER_ROLE, USER_PASSWORD)
+                .postForEntity(url, student, Student.class);
         assertEquals(student.getStudNumber(), studentResponseEntity.getBody().getStudNumber());
         assertEquals(student.getFirstName(), studentResponseEntity.getBody().getFirstName());
         assertEquals(student.getLastName(), studentResponseEntity.getBody().getLastName());
@@ -51,9 +57,23 @@ public class StudentControllerTest {
 
     @Test
     public void c_update() {
+        Student updated = new Student.Builder().setFirstName("John")
+                .setLastName("Ruxx").setStudNumber("21777").build();
+        String url2 = url + "update";
+        System.out.println("URL: " +url2);
+        System.out.println("Post data: " +updated);
+        ResponseEntity<Student> responseEntity = testRestTemplate
+                .withBasicAuth(USER_ROLE, USER_PASSWORD)
+                .postForEntity(url, updated, Student.class);
+        assertEquals(student.getStudNumber(), responseEntity.getBody().getStudNumber());
     }
 
     @Test
     public void d_delete() {
+        String url2 = url +"delete/"+ student.getStudNumber();
+        System.out.println("URL: " +url2);
+        testRestTemplate
+                .withBasicAuth(USER_ROLE, USER_PASSWORD)
+                .delete(url2);
     }
 }

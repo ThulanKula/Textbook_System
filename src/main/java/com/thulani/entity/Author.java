@@ -70,6 +70,13 @@ public class Author {
             return this;
         }
 
+        public Builder copy(Author author) {
+            this.authNumber = author.authNumber;
+            this.authFirstName = author.authFirstName;
+            this.authLastName = author.authLastName;
+            return this;
+        }
+
         public Author Build(){
             return new Author(this);
         }

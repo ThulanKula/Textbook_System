@@ -15,7 +15,7 @@ public class CourseController {
     @Autowired
     private CourseServiceImpl courseService;
 
-    @PostMapping
+
     public Course create(@RequestBody Course course){
         Course courseNew = CourseFactory.buildCourse(course.getCourseName());
         return courseService.create(courseNew);

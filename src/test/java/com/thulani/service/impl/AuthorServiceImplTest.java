@@ -24,7 +24,7 @@ public class AuthorServiceImplTest {
 
     @Autowired
     private static AuthorService authorService;
-    private static Author author = AuthorFactory.createAuthor("1010", "Arthur C.", "Clarke");
+    private static Author author = AuthorFactory.createAuthor( "Arthur C.", "Clarke");
 
     @Test
     public void d_getAll() {

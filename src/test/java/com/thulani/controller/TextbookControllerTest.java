@@ -9,11 +9,10 @@ import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Objects;
 
 import static org.junit.Assert.*;
 
@@ -29,33 +28,38 @@ import static org.junit.Assert.*;
 public class TextbookControllerTest {
 
     private static Textbook textbook = TextbookFactory.createTextbook("Harry Potter", 2, "Brand New", "9484545", 2, 12);
+    private static final String SECURITY_USERNAME = "staff";
+    private static final String SECURITY_PASSWORD = "2000217";
 
     @Autowired
-    private TestRestTemplate testRestTemplate;
+    private TestRestTemplate restTemplate;
     private String baseURL = "http://localhost:8080/textbook/";
 
     @Test
     public void a_create() {
         String url = baseURL + "create";
-        System.out.println("URL: " +textbook);
-        ResponseEntity<Textbook> postResponse = testRestTemplate.postForEntity(url, textbook, Textbook.class);
-        assertNotNull(postResponse);
-        //assertNotNull(postResponse.getStatusCode());
+        System.out.println("URL: " +url);
+        System.out.println("Post data: " +textbook);
+        ResponseEntity<Textbook> postResponse = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_PASSWORD)
+                .postForEntity(url, textbook, Textbook.class);
+        //assertNotNull(postResponse);
         assertNotNull(postResponse.getBody());
         textbook = postResponse.getBody();
-        //System.out.println(postResponse.getStatusCode());
-        //System.out.println(postResponse);
         System.out.println("Saved data: " +textbook);
         assertEquals(textbook.getBookId(), postResponse.getBody().getBookId());
-        //System.out.println(postResponse.getBody());
+        //assertEquals(HttpStatus.OK, postResponse.getStatusCode());
+        System.out.println(postResponse);
     }
     @Test
     public void b_read()
     {
         String url = baseURL +"read/"+ textbook.getBookId();
         System.out.println("URL: " +url);
-        ResponseEntity<Textbook> responseEntity = testRestTemplate.getForEntity(url, Textbook.class);
-        assertEquals(textbook.getBookId(), responseEntity.getBody().getBookId());
+        ResponseEntity<Textbook> responseEntity = restTemplate
+                .withBasicAuth(SECURITY_USERNAME, SECURITY_USERNAME)
+                .getForEntity(url, Textbook.class);
+        assertEquals(textbook.getBookId(), Objects.requireNonNull(responseEntity.getBody()).getBookId());
     }
 
     @Test
@@ -65,12 +69,13 @@ public class TextbookControllerTest {
                 .setBookEdition(2016)
                 .setBookISBN("987-456-1213")
                 .setBookPrice(16.45)
-                .setBookVolume(4).build();
+                .setBookVolume(4)
+                .build();
         String url = baseURL + "update";
         System.out.println("URL: " +url);
         System.out.println("Post data: " +updated);
-        ResponseEntity<Textbook> responseEntity = testRestTemplate.postForEntity(url, updated, Textbook.class);
-        assertEquals(textbook.getBookId(), responseEntity.getBody().getBookId());
+        ResponseEntity<Textbook> responseEntity = restTemplate.postForEntity(url, updated, Textbook.class);
+        assertEquals(textbook.getBookId(), Objects.requireNonNull(responseEntity.getBody()).getBookId());
     }
 
     @Test
@@ -79,7 +84,7 @@ public class TextbookControllerTest {
         System.out.println("URL: " +url);
         HttpHeaders httpHeaders = new HttpHeaders();
         HttpEntity<String> httpEntity = new HttpEntity<>(null, httpHeaders);
-        ResponseEntity<String> responseEntity = testRestTemplate.exchange(url, HttpMethod.GET, httpEntity, String.class);
+        ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, httpEntity, String.class);
         System.out.println(responseEntity);
         System.out.println(responseEntity.getBody());
     }
@@ -88,6 +93,6 @@ public class TextbookControllerTest {
     public void e_delete(){
         String url = baseURL +"delete/"+ textbook.getBookId();
         System.out.println("URL: " +url);
-        testRestTemplate.delete(url);
+        restTemplate.delete(url);
     }
 }
