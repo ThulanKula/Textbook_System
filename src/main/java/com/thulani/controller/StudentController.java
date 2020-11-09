@@ -23,7 +23,6 @@ public class StudentController {
     @PostMapping("/create")
     public Student create(@RequestBody Student student){
         Student student1 = StudentFactory.createStudent(student.getStudNumber(), student.getFirstName(), student.getLastName());
-
         return studentService.create(student1);
     }
 
