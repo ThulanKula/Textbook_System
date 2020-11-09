@@ -27,6 +27,7 @@ public class CourseControllerTest {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     private static Course course = CourseFactory.buildCourse("Nursing");
     private static String SECURITY_USERNAME = "student";
     private static String SECURITY_PASSWORD = "2171000";
@@ -34,6 +35,13 @@ public class CourseControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
     private String baseURL = "http://localhost:8080/Textbook_System/course/";
+=======
+    private static Course course = CourseFactory.buildCourse("Information Technology");
+
+    @Autowired
+    private TestRestTemplate restTemplate;
+    private String baseURL = "http://localhost:8080/course/";
+>>>>>>> parent of 00eb900... security commit
 =======
     private static Course course = CourseFactory.buildCourse("Information Technology");
 
@@ -84,7 +92,11 @@ public class CourseControllerTest {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 .setCourseName("Advanced Nursing").build();
+=======
+                .setCourseName("INFORMATION & COMMUNICATIONS TECHNOLOGY").build();
+>>>>>>> parent of 00eb900... security commit
 =======
                 .setCourseName("INFORMATION & COMMUNICATIONS TECHNOLOGY").build();
 >>>>>>> parent of 00eb900... security commit
