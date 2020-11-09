@@ -1,4 +1,4 @@
-//package com.thulani.repository.impl;
+package com.thulani.repository.impl;
 
 import com.thulani.entity.Student;
 import com.thulani.repository.StudentRepository;
