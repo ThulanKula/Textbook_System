@@ -30,7 +30,7 @@ public class CourseControllerTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
-    private String baseURL = "http://localhost:8080/Textbook_System/course/";
+    private String baseURL = "http://localhost:8080/textbook/course/";
 
     @Test
     public void acreate(){
@@ -48,6 +48,7 @@ public class CourseControllerTest {
     }
 
     @Test
+    @Ignore
     public void bread()
     {
         String url = baseURL +"read/"+ course.getCourseCode();
@@ -59,6 +60,7 @@ public class CourseControllerTest {
     }
 
     @Test
+    @Ignore
     public void cupdate(){
         Course updated = new Course.Builder().copy(course)
                 .setCourseName("Advanced Physiotherapy").build();
@@ -72,6 +74,7 @@ public class CourseControllerTest {
     }
 
     @Test
+    @Ignore
     public void dgetall() {
         String url = baseURL + "all data";
         System.out.println("URL: " +url);
@@ -85,7 +88,6 @@ public class CourseControllerTest {
     }
 
     @Test
-    @Ignore
     public void edelete(){
         String url = baseURL +"delete/"+ course.getCourseCode();
         System.out.println("URL: " +url);

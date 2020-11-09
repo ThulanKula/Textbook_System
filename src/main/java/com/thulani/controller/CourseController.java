@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.*;
 import java.util.Set;
 
 @RestController
-@RequestMapping("Textbook_System/course")
+@RequestMapping("/course")
 
 public class CourseController {
     @Autowired
