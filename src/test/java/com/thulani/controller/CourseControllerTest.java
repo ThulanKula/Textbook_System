@@ -63,7 +63,7 @@ public class CourseControllerTest {
     @Ignore
     public void cupdate(){
         Course updated = new Course.Builder().copy(course)
-                .setCourseName("Advanced Physiotherapy").build();
+                .setCourseName("Administration").build();
         String url = baseURL + "update";
         System.out.println("URL: " +url);
         System.out.println("Updated data: " +updated);
