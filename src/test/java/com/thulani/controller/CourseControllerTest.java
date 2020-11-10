@@ -24,7 +24,7 @@ import static org.junit.Assert.assertNotNull;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
 public class CourseControllerTest {
-    private static Course course = CourseFactory.buildCourse("Physiotherapy");
+    private static Course course = CourseFactory.buildCourse("Bcom Law");
     private static String SECURITY_USERNAME = "student";
     private static String SECURITY_PASSWORD = "2171000";
 
@@ -48,7 +48,6 @@ public class CourseControllerTest {
     }
 
     @Test
-    @Ignore
     public void bread()
     {
         String url = baseURL +"read/"+ course.getCourseCode();
@@ -60,10 +59,9 @@ public class CourseControllerTest {
     }
 
     @Test
-    @Ignore
     public void cupdate(){
         Course updated = new Course.Builder().copy(course)
-                .setCourseName("Administration").build();
+                .setCourseName("Law").build();
         String url = baseURL + "update";
         System.out.println("URL: " +url);
         System.out.println("Updated data: " +updated);
@@ -74,7 +72,6 @@ public class CourseControllerTest {
     }
 
     @Test
-    @Ignore
     public void dgetall() {
         String url = baseURL + "all data";
         System.out.println("URL: " +url);
