@@ -15,7 +15,7 @@ public class DepartmentServiceImplTest {
 
     @Autowired
     private static DepartmentService service;
-    private static Department department = DepartmentFactory.createDepartment("1101", "Applied Design");
+    private static Department department = DepartmentFactory.createDepartment("Applied Design");
 
     @Test
     public void a_create() {

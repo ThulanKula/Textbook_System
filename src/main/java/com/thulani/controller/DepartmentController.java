@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/Department")
+@RequestMapping("/department")
 
 public class DepartmentController {
     @Autowired
@@ -17,7 +17,7 @@ public class DepartmentController {
 
     @PostMapping("/create")
     public Department create(@RequestBody Department department) {
-        Department addDepartment = DepartmentFactory.createDepartment(department.getDepartmentNum(), department.getDepartmentName());
+        Department addDepartment = DepartmentFactory.createDepartment(department.getDepartmentName());
 
         return departmentService.create(addDepartment);
     }

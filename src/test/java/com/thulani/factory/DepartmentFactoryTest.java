@@ -9,22 +9,22 @@ public class DepartmentFactoryTest {
 
     @Test
     public void createDepartment() {
-        Department department = DepartmentFactory.createDepartment("123", "Journalism");
+        Department department = DepartmentFactory.createDepartment("Journalism");
         Assert.assertNotNull(department.getDepartmentName());
         System.out.println(department);
     }
 
     @Test
     public void equalityObjectDepartment() {
-        department1 = DepartmentFactory.createDepartment("123", "Department of Informatics and Design");
-        department2 = DepartmentFactory.createDepartment("123", "Department of Informatics and Design");
+        department1 = DepartmentFactory.createDepartment( "Department of Informatics and Design");
+        department2 = DepartmentFactory.createDepartment("Department of Informatics and Design");
 
         Assert.assertEquals(department1, department2);
     }
 
     @Test
     public void identityTest() {
-        department3 = DepartmentFactory.createDepartment("123", "Department of Informatics and Design");
+        department3 = DepartmentFactory.createDepartment("Department of Informatics and Design");
 
         String deptName = "Department of Informatics and Design";
         String deptNum = "123";

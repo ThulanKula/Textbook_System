@@ -9,22 +9,22 @@ public class AuthorFactoryTest {
 
     @Test
     public void createAuthor() {
-        Author author = AuthorFactory.createAuthor("1010", "Authur C.", "Clarke");
+        Author author = AuthorFactory.createAuthor( "Authur C.", "Clarke");
         Assert.assertNotNull(author.getAuthFirstName());
         System.out.println(author);
     }
 
     @Test
     public void equalityObjectAuthor() {
-        author1 = AuthorFactory.createAuthor("1010", "Authur C.", "Clarke");
-        author2 = AuthorFactory.createAuthor("1010", "Authur C.", "Clarke");
+        author1 = AuthorFactory.createAuthor( "Authur C.", "Clarke");
+        author2 = AuthorFactory.createAuthor( "Authur C.", "Clarke");
 
         Assert.assertEquals(author1, author2);
     }
 
     @Test
     public void identityTest() {
-        author3 = AuthorFactory.createAuthor("1010", "Authur C.", "Clarke");
+        author3 = AuthorFactory.createAuthor( "Authur C.", "Clarke");
 
         String myAuthorName = "Authur C.";
         String myAuthNumber = "1010";
