@@ -30,7 +30,7 @@ public class CourseControllerTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
-    private String baseURL = "http://localhost:8080/textbook/course/";
+    private String baseURL = "http://localhost:8080/Textbook_System/course/";
 
     @Test
     public void acreate(){
